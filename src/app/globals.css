@@ -7,10 +7,10 @@
   --font-mono: var(--font-geist-mono);
 } */
 
-/* :root {
+:root {
   --background: #ffffff;
   --foreground: #171717;
-} */
+}
 
 @theme {
   --color-primary: #ec1313;
@@ -19,6 +19,22 @@
   --color-card-dark: #271c1c;
   --color-card-border-dark: #392828;
   --color-text-muted-dark: #b99d9d;
+
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #221010;
+  
+  --color-text-light: #1f2937;
+  --color-text-dark: #f9fafb;
+  
+  --color-text-muted-light: #6b7280;
+  /* --color-text-muted-dark: #9ca3af; /* Ajustado al valor de stitch, si prefieres el tuyo original (#b99d9d) puedes dejarlo */
+  
+  --color-border-light: #e5e7eb;
+  --color-border-dark: #392828;
+  
+
+
+
   
   --font-display: var(--font-inter), sans-serif;
   
