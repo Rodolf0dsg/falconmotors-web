@@ -4,6 +4,10 @@ import { ListMobileItem, ListItem } from '../app/components/header/ListItems';
 
 const navItems = [
   {
+    title: 'Inicio',
+    path: '/'
+  },
+  {
     title: 'Automoviles',
     path: '/vehicles'
   },
@@ -17,7 +21,7 @@ const navItems = [
   },
   {
     title: 'Contacto',
-    path: ''
+    path: '/contact'
   }
 ]
 
@@ -28,7 +32,7 @@ export const Header = () => {
   useEffect(() => {
       const handleScroll = () => {
           
-          const scrollThreshold = 500; 
+          const scrollThreshold = 100; 
 
           if (typeof window !== 'undefined') {
               setIsScrolled(window.scrollY > scrollThreshold);
@@ -76,16 +80,6 @@ export const Header = () => {
               ))
             }
 
-            {/* <a className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-              href="#">Financiamiento</a>
-            <a className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-              href="#">Consignaciones</a>
-            <a className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-              href="#">Compra Directa</a>
-            <a className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-              href="#">Buscamos por ti</a>
-            <a className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-              href="#">Contacto</a> */}
           </nav>
           <div className="hidden lg:flex items-center">
             <button
@@ -96,7 +90,7 @@ export const Header = () => {
           <div className="lg:hidden">
             <input className="hidden" id="mobile-menu-toggle" type="checkbox" />
             <label className="cursor-pointer text-white" htmlFor="mobile-menu-toggle">
-              {/* <span className="material-symbols-outlined text-3xl">menu</span> */}
+              
               <svg 
                 className="w-8 h-8" 
                 xmlns="http://www.w3.org/2000/svg" 
