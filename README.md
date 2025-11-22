@@ -2,14 +2,14 @@
 
 Este es el repositorio principal para la aplicación web (Landing Page) de FalconMotors.
 
-## 🚀 Tecnologías Clave
+## Tecnologías Utilizadas
 
 * **Framework:** Next.js (App Router)
 * **Estilos:** Tailwind CSS (Diseño responsive)
 * **Base de Datos:** Ninguna por el momento
 * **Lenguaje:** JavaScript / React
 
-## 🛠️ Configuración e Instalación (Onboarding)
+## Configuración e Instalación (Onboarding)
 
 Sigue estos pasos para que la aplicación corra en tu máquina local:
 
@@ -22,7 +22,7 @@ Sigue estos pasos para que la aplicación corra en tu máquina local:
 
 1.  **Clonar el Repositorio:**
     ```bash
-    git clone [https://github.com/Rodolf0dsg/falconmotors-web](https://github.com/Rodolf0dsg/falconmotors-web)
+    git clone https://github.com/Rodolf0dsg/falconmotors-web.git
     cd falconmotors-web
     ```
 2.  **Instalar Dependencias:**
