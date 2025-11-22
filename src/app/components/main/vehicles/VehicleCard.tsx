@@ -1,0 +1,54 @@
+import { VehicleProps } from "@/src/Types/VehicleProps"
+
+
+export const VehicleCard = ({
+  model, brand, mileage, transmission, year, price, imageUrl, sold, used
+}:VehicleProps) => {
+  return (
+       <div
+          className="flex flex-col gap-3 rounded-xl bg-gray-100 dark:bg-[#1c1c1c] border border-gray-200 dark:border-card-border-dark overflow-hidden group"
+        >
+          <div className="relative">
+            <div
+              className="w-full bg-center bg-no-repeat aspect-video bg-cover transition-transform duration-300 group-hover:scale-105"
+              data-alt={`${brand} ${model} ${year}`}
+              style={{backgroundImage: `url("${imageUrl}")`}}>
+            </div>
+            <span
+              className={`absolute top-2 left-2 ${used ? 'bg-gray-500' : 'bg-blue-500'} text-white text-xs font-bold px-2 py-1 rounded-full`}
+            >
+              {used ? 'USADO' : 'NUEVO'}
+            </span>
+            {
+              (sold) &&
+              (<div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <span
+                  className="text-white text-3xl font-black tracking-widest -rotate-12 border-4 border-white p-4">VENDIDO</span>
+              </div>)
+            }
+          </div>
+          <div className="p-4 pt-0">
+            <p className="text-gray-900 dark:text-white text-lg font-bold leading-normal mb-2">{ brand } { model }</p>
+            <div className="text-gray-600 dark:text-text-muted-dark text-sm space-y-1 mb-3">
+              <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base">calendar_today</span> 
+                { year }
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base">settings</span>
+                { transmission }
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base">speed</span> 
+                { mileage.toLocaleString('en-US') } km
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-base">sell</span> 
+                { brand }
+              </p>
+            </div>
+            <p className="text-2xl font-black price-highlight">${ price.toLocaleString('en-US') }</p>
+          </div>
+        </div>
+  )
+}
