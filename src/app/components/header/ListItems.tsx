@@ -1,4 +1,7 @@
+'use client';
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface Props {
   title: string;
@@ -6,10 +9,13 @@ interface Props {
 }
 
 export const ListMobileItem = ({ title, path }: Props) => {
+
+  const pathname = usePathname();
+
   return (
     <li>
       <Link 
-        className="block text-white text-base font-medium hover:text-primary transition-colors"
+        className={`block ${ (pathname === path) ? 'text-primary' : 'text-white' } text-base font-medium hover:text-primary transition-colors`}
         href={ path }
       >
         { title }
@@ -19,9 +25,12 @@ export const ListMobileItem = ({ title, path }: Props) => {
 }
 
 export const ListItem = ({ title, path }:Props) => {
+
+  const pathname = usePathname();
+
   return (
     <Link 
-      className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
+      className={`${ (pathname === path) ? 'text-primary' : 'text-white' } font-medium leading-normal hover:text-primary transition-colors`}
       href={ path }
     >
       { title }
