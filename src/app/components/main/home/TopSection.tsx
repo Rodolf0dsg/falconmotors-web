@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 export const TopSection = () => {
   return (
@@ -13,10 +14,10 @@ export const TopSection = () => {
         <h2 className="text-white text-base md:text-lg font-normal leading-normal">Explora nuestro inventario de vehículos
           nuevos y usados de alta calidad.</h2>
         <div className="flex flex-wrap gap-4 justify-center mt-4">
-          <button
+          <Link href="/vehicles"
             className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
             <span className="truncate">Ver Inventario</span>
-          </button>
+          </Link>
           <button
             className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-card-border-dark text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-80 transition-opacity">
             <span className="truncate">Pedir una cita</span>
