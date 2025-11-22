@@ -1,0 +1,45 @@
+
+
+export const QuestionSection = () => {
+  return (
+    <section className="py-16 sm:py-24 bg-card-dark">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <h2 className="text-white text-3xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
+        <div className="space-y-4">
+          <details className="group bg-background-dark p-6 rounded-lg">
+            <summary className="flex justify-between items-center cursor-pointer text-white font-medium list-none">
+              ¿Qué tipo de financiamiento ofrecen?
+              <span className="transition group-open:rotate-180">
+                <span className="material-symbols-outlined">expand_more</span>
+              </span>
+            </summary>
+            <p className="text-text-muted-dark mt-4">Ofrecemos múltiples opciones de financiamiento, incluyendo crédito
+              convencional, leasing y opciones de pago flexibles. Trabajamos con varios bancos para encontrar la mejor
+              tasa para ti.</p>
+          </details>
+          <details className="group bg-background-dark p-6 rounded-lg">
+            <summary className="flex justify-between items-center cursor-pointer text-white font-medium list-none">
+              ¿Puedo entregar mi auto actual como parte de pago?
+              <span className="transition group-open:rotate-180">
+                <span className="material-symbols-outlined">expand_more</span>
+              </span>
+            </summary>
+            <p className="text-text-muted-dark mt-4">¡Claro que sí! Aceptamos vehículos como parte de pago. Realizamos una
+              tasación profesional y transparente para ofrecerte el mejor valor por tu auto actual.</p>
+          </details>
+          <details className="group bg-background-dark p-6 rounded-lg">
+            <summary className="flex justify-between items-center cursor-pointer text-white font-medium list-none">
+              ¿Los vehículos usados tienen garantía?
+              <span className="transition group-open:rotate-180">
+                <span className="material-symbols-outlined">expand_more</span>
+              </span>
+            </summary>
+            <p className="text-text-muted-dark mt-4">Todos nuestros vehículos usados certificados vienen con una garantía
+              limitada que cubre los componentes principales del motor y la transmisión, para que compres con total
+              confianza.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  )
+}
