@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { ListMobileItem, ListItem } from '../app/components/header/ListItems';
+import Link from 'next/link';
 
 const navItems = [
   {
@@ -82,10 +83,10 @@ export const Header = () => {
 
           </nav>
           <div className="hidden lg:flex items-center">
-            <button
+            <Link href={'/contact'}
               className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
               <span className="truncate">Agendar una cita</span>
-            </button>
+            </Link>
           </div>
           <div className="lg:hidden">
             <input className="hidden" id="mobile-menu-toggle" type="checkbox" />
@@ -104,7 +105,7 @@ export const Header = () => {
             <label className="fixed inset-0 z-40 bg-black bg-opacity-50 opacity-0 invisible transition-opacity duration-300"
               htmlFor="mobile-menu-toggle" id="mobile-menu-overlay"></label>
             <div
-              className="fixed top-0 right-0 h-full w-72 bg-card-dark z-50 shadow-lg  transition-transform duration-300"
+              className="fixed top-0 right-0 h-full w-72 bg-card-dark z-60 shadow-lg  transition-transform duration-300"
               id="mobile-menu-sidebar">
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-center p-6 border-b border-card-border-dark">
@@ -135,10 +136,10 @@ export const Header = () => {
                   </ul>
                 </nav>
                 <div className="p-6 border-t border-card-border-dark">
-                  <button
+                  <Link href="/contact"
                     className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
                     <span className="truncate">Agendar una cita</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
