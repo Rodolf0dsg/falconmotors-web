@@ -22,10 +22,49 @@ const mockData = {
 }
 
 const colorOptions = [
-  { name: 'Rojo', code: 'rgb(217, 4, 41)' },
-  { name: 'Negro', code: 'rgb(33, 37, 41)' },
-  { name: 'Plata', code: 'rgb(206, 212, 218)' },
-  { name: 'Blanco', code: 'rgb(255, 255, 255)' },
+  { name: 'Rojo', 
+    code: 'rgb(217, 4, 41)',  
+    images: [
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Rojo+Corolla+1', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Rojo+Corolla+2', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Rojo+Corolla+3', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Rojo+Corolla+4', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Rojo+Corolla+5', alt: 'Corolla' },
+    ]
+  },
+  { 
+    name: 'Negro', 
+    code: 'rgb(33, 37, 41)',
+    images: [
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Negro+Corolla+1', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Negro+Corolla+2', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Negro+Corolla+3', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Negro+Corolla+4', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Negro+Corolla+5', alt: 'Corolla' },
+    ]
+  },
+  { 
+    name: 'Plata', 
+    code: 'rgb(206, 212, 218)',
+    images: [
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Plata+Corolla+1', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Plata+Corolla+2', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Plata+Corolla+3', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Plata+Corolla+4', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Plata+Corolla+5', alt: 'Corolla' },
+    ]
+  },
+  { 
+    name: 'Blanco', 
+    code: 'rgb(255, 255, 255)',
+        images: [
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Blanco+Corolla+1', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Blanco+Corolla+2', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Blanco+Corolla+3', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Blanco+Corolla+4', alt: 'Corolla' },
+      { url: 'https://placehold.co/800x600/000000/FFFFFF?text=Blanco+Corolla+5', alt: 'Corolla' },
+    ]
+   },
 ];
 
 const vehicleImages: Record<string, string> = {
@@ -53,8 +92,8 @@ export default async function DetailedVehiclePage({ params }: Props) {
 
         <VehicleGallery 
           colors={ colorOptions }
-          imagesByColor={ vehicleImages }
-          thumbnails={ staticThumbnails }
+          // imagesByColor={ vehicleImages }
+          // thumbnails={ staticThumbnails }
         />
         
         <PriceAndActions

@@ -3,14 +3,14 @@ import { useState } from "react";
 import { ColorSelector } from "./ColorSelector";
 import { ThumbnailGallery } from "./ThumbnailGallery";
 
-interface ColorOption {
-  name: string;
-  code: string;
-}
-
 interface Thumbnail {
   url: string;
   alt: string;
+}
+interface ColorOption {
+  name: string;
+  code: string;
+  images: Thumbnail[];
 }
 
 //TODO: Implementar si es necesario
@@ -23,18 +23,19 @@ interface Thumbnail {
 
 interface VehicleGalleryProps {
   colors: ColorOption[];
-  imagesByColor: Record<string, string>; // ejemplo: { "Rojo": "url", "Negro": "url" }
-  thumbnails: Thumbnail[];
   // pricing?: PricingData; //TODO: Implementar si es necesario
 }
 
 
 export const VehicleGallery = ({
-  colors, imagesByColor, thumbnails
+  colors,
 }: VehicleGalleryProps) => {
 
   const [selectedColor, setSelectedColor] = useState(colors[0].name);
   const [selectedThumbnailIndex, setSelectedThumbnailIndex] = useState(0);
+
+  const selectedColorObj = colors.find(c => c.name === selectedColor);
+  const selectedThumbnails = selectedColorObj?.images ?? [];
 
   const handleColorChange = (colorName: string) => {
     setSelectedColor(colorName);
@@ -45,19 +46,20 @@ export const VehicleGallery = ({
   };
 
   // Determina la URL de la imagen principal basada en el color seleccionado.
-  const mainColorImageUrl = imagesByColor[selectedColor] ?? imagesByColor[colors[0].name];
-  const thumbnailOverrideUrl = thumbnails[selectedThumbnailIndex]?.url;
+  // const mainColorImageUrl = imagesByColor[selectedColor] ?? imagesByColor[colors[0].name];
+  // const thumbnailOverrideUrl = thumbnails[selectedThumbnailIndex]?.url;
   
   // Si la primera miniatura (índice 0) está seleccionada, se usa la imagen del color principal,
   // si no, se usa la imagen de la miniatura seleccionada.
-  const currentImageUrl = selectedThumbnailIndex === 0 ? mainColorImageUrl : thumbnailOverrideUrl;  
+  // const currentImageUrl = selectedThumbnailIndex === 0 ? mainColorImageUrl : thumbnailOverrideUrl;  
+  const currentImageUrl = selectedThumbnails[selectedThumbnailIndex]?.url ?? "";
 
   return (
     <div className="lg:col-span-3">
       <div className="flex flex-col md:flex-row gap-4">
 
         <ThumbnailGallery 
-          images={thumbnails}
+          images={selectedThumbnails}
           selectedImageIndex={selectedThumbnailIndex}
           onThumbnailSelect={handleThumbnailSelect}
         />
