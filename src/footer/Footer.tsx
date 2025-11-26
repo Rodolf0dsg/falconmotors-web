@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="bg-card-dark text-text-muted-dark py-12">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-4 mb-4">
               <div className="size-6 text-primary">
