@@ -10,10 +10,12 @@ interface Props {
   type:         string;
   motor:        string;
   typeOfOil:    string;
+  features?:    string[];
 }
 
+
 export const PriceAndActions = ({
-  brand, model, year, mileage, price, transmission, used, horsePower, type, motor, typeOfOil
+  brand, model, year, mileage, price, transmission, used, horsePower, type, motor, typeOfOil, features
 }: Props) => {
   return (
     <div className="lg:col-span-2">
@@ -33,10 +35,15 @@ export const PriceAndActions = ({
               <p className="text-4xl font-black text-primary tracking-tighter">${ price.toLocaleString('en-US') }</p>
             </div>
             <ul className="list-disc list-inside text-sm text-text-muted-light dark:text-text-muted-dark space-y-1">
-              <li>Único dueño, servicios de agencia.</li>
+              { used ? <li>Único dueño, servicios de agencia.</li> : <li>Vehículo nuevo con garantía de fábrica.</li>}
+              {
+                features && features.map((feature, index) => (
+                  <li key={index}>{ feature }</li>
+                ))
+              }
             </ul>
             <button
-              className="w-full flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-gradient-to-b from-primary to-red-700 text-white text-base font-bold shadow-lg hover:shadow-primary/40 transition-shadow">
+              className="w-full flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-linear-to-b from-primary to-red-700 text-white text-base font-bold shadow-lg hover:shadow-primary/40 transition-shadow">
               <span className="material-symbols-outlined">call</span>
               <span>Contactar Asesor</span>
             </button>
