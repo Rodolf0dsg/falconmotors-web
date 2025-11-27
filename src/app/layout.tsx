@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "../footer/Footer";
 import { Header } from "../header/Header";
+import { ReactQueryProvider } from "./components/Query/ReactQueryProvider";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,7 +37,9 @@ export default function RootLayout({
       >
         <div className="relative w-full">
           <Header />
-            {children}
+            <ReactQueryProvider>
+              {children}
+            </ReactQueryProvider>
           <Footer/>
           <a className="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-green-600 transition-colors"
             href="#">

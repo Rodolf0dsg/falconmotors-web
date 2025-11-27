@@ -1,7 +1,7 @@
 interface Props {
   brand:        string
   model:        string
-  year:         string;
+  year:         number | string;
   mileage:      number;
   price:        number;
   transmission: string;

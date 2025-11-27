@@ -1,12 +1,14 @@
 import { VehicleProps } from "@/src/Types/VehicleProps"
+import Link from "next/link"
 
 
 export const VehicleCard = ({
-  model, brand, mileage, transmission, year, price, imageUrl, sold, used
+  id, model, brand, mileage, transmission, year, price, imageUrl, sold, used
 }:VehicleProps) => {
   return (
-       <div
-          className="flex flex-col gap-3 rounded-xl bg-gray-100 dark:bg-[#1c1c1c] border border-gray-200 dark:border-card-border-dark overflow-hidden group"
+       <Link
+          href={ `/vehicles/${id}` }
+          className="flex flex-col gap-3 rounded-xl bg-gray-100 dark:bg-[#1c1c1c] border border-gray-200 dark:border-card-border-dark overflow-hidden group cursor-pointer"
         >
           <div className="relative">
             <div
@@ -49,6 +51,6 @@ export const VehicleCard = ({
             </div>
             <p className="text-2xl font-black price-highlight">${ price.toLocaleString('en-US') }</p>
           </div>
-        </div>
+        </Link>
   )
 }

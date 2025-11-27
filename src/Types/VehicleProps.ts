@@ -1,5 +1,5 @@
 export interface VehicleProps {
-  id:           number;
+  id:           string | number;
   brand:        string;
   model:        string;
   year:         number;
