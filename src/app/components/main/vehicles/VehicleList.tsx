@@ -5,7 +5,6 @@ import { VehicleCard } from "./VehicleCard";
 import { getVehicles } from "@/src/api/Vehicles";
 import { Loader } from "../../Query/Loader";
 import { useSearchParams } from "next/navigation";
-import { SearchBar } from "./SearchBar";
 
 export const VehicleList = () => {
 
@@ -37,10 +36,7 @@ export const VehicleList = () => {
   }
 
   return (
-    <div className="w-full lg:w-3/4 xl:w-4/5">
-
-      <SearchBar />
-
+    <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {
           data?.data.map( vehicle => (
@@ -62,6 +58,6 @@ export const VehicleList = () => {
       </div>
 
       <CustomPagination pages={ data?.pages }/>
-    </div>
+    </>
   )
 }
