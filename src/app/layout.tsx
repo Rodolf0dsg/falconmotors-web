@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "../footer/Footer";
 import { Header } from "../header/Header";
+import { Header1 } from "../header/Header1";
 import { ReactQueryProvider } from "./components/Query/ReactQueryProvider";
 
 const inter = Inter({
@@ -36,7 +37,7 @@ export default function RootLayout({
         className={`${inter.variable} font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200`}
       >
         <div className="relative w-full">
-          <Header />
+          <Header1 />
             <ReactQueryProvider>
               {children}
             </ReactQueryProvider>
