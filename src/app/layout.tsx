@@ -5,6 +5,7 @@ import { Footer } from "../footer/Footer";
 import { Header } from "../header/Header";
 import { Header1 } from "../header/Header1";
 import { ReactQueryProvider } from "./components/Query/ReactQueryProvider";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -52,6 +53,7 @@ export default function RootLayout({
           </a>
 
         </div>
+        <Toaster position="top-right"/>
       </body>
     </html>
   );

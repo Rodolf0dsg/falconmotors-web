@@ -1,5 +1,10 @@
 import { VehicleProps } from "@/src/Types/VehicleProps"
 import Link from "next/link"
+import { IoCalendarClearOutline, IoPricetagsOutline } from "react-icons/io5"
+import { MdOutlineCalendarToday } from "react-icons/md"
+import { PiGear } from "react-icons/pi"
+import { SiSpeedtest } from "react-icons/si"
+import { TbManualGearbox } from "react-icons/tb"
 
 
 export const VehicleCard = ({
@@ -33,19 +38,25 @@ export const VehicleCard = ({
             <p className="text-gray-900 dark:text-white text-lg font-bold leading-normal mb-2">{ brand } { model }</p>
             <div className="text-gray-600 dark:text-text-muted-dark text-sm space-y-1 mb-3">
               <p className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">calendar_today</span> 
+                {/* <span className="material-symbols-outlined text-base">calendar_today</span>  */}
+                {/* <IoCalendarClearOutline size={ 20 } /> */}
+                <MdOutlineCalendarToday size={ 21 }/> 
                 { year }
               </p>
               <p className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">settings</span>
+                {/* <span className="material-symbols-outlined text-base">settings</span> */}
+                {/* <PiGear size={ 23 } /> */}
+                <TbManualGearbox size={ 23 } />
                 { transmission }
               </p>
               <p className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">speed</span> 
+                {/* <span className="material-symbols-outlined text-base">speed</span>  */}
+                <SiSpeedtest size={ 20 } />
                 { mileage.toLocaleString('en-US') } km
               </p>
               <p className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">sell</span> 
+                {/* <span className="material-symbols-outlined text-base">sell</span>  */}
+                <IoPricetagsOutline size={ 23 } />
                 { brand }
               </p>
             </div>

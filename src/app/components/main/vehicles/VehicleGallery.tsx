@@ -49,7 +49,7 @@ export const VehicleGallery = ({
   
   return (
     <div className="lg:col-span-3">
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col md:flex-row gap-4 items-start">
 
         <ThumbnailGallery 
           images={selectedThumbnails}

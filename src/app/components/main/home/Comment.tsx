@@ -1,5 +1,6 @@
 import type { CommentProps } from "@/src/Types/CommentProps";
 import Image from "next/image";
+import { RxAvatar } from "react-icons/rx";
 
 const FilledStar = () => (
   <svg 
@@ -26,20 +27,24 @@ const OutlinedStar = () => (
   </svg>
 );
 
-export const Comment = ({name, text, stars}: CommentProps) => {
+export const Comment = ({name, text, stars = 5, hidden, ...props}: CommentProps) => {
   return (
-    <div className="flex flex-col gap-4 rounded-lg bg-card-dark p-6 min-w-[320px] sm:min-w-[380px]">
+    <div 
+      className={`flex flex-col gap-4 rounded-lg bg-card-dark p-6 min-w-[320px] sm:min-w-[380px] min-h-[150px] ${hidden ? 'opacity-0' : null}`}
+    >
       <div className="flex items-center gap-4">
-        <Image 
+        {/* <Image 
           className="w-12 h-12 rounded-full border-gray-800 border-2" 
           alt={`Foto de ${ name }`}
           width={ 12 }
           height={ 12 }
           src="/avatar.png" 
-        />
+        /> */}
+        <RxAvatar size={ 48 } className="text-gray-500"/>
+
 
         <div>
-          <h4 className="text-white font-bold">{ name }</h4>
+          <h4 className="text-white font-bold">{ name || '' }</h4>
           <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
                 <div 
@@ -58,7 +63,7 @@ export const Comment = ({name, text, stars}: CommentProps) => {
         </div>
 
       </div>
-      <p className="text-text-muted-dark text-sm">"{ text }"</p>
+      <p className="text-text-muted-dark text-sm">"{ text || '' }"</p>
     </div>
   )
 }

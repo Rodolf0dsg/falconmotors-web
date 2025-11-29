@@ -1,10 +1,30 @@
-import Image from "next/image"
+'use client'
 import { CommentProps } from "@/src/Types/CommentProps"
 import { Comment } from "./Comment";
+import { CommentForm } from "./CommentForm";
+import { useEffect, useState } from "react";
+import { Modal } from "./Modal";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getComments } from "@/src/api/Comment";
 
 
 const comments: CommentProps[] = [
-   {
+  {
+    name: 'Ana García',
+    text: 'Muy buena atención al cliente. Respondieron todas mis dudas y me ayudaron con el financiamiento. Estoy feliz con mi nuevo SUV.',
+    stars: 4
+  },
+  {
+    name: 'Carlos Mendoza',
+    text: 'El proceso fue increíblemente rápido y sencillo. Encontré el auto que quería a un precio justo. ¡Totalmente recomendados!',
+    stars: 4
+  },
+  {
+    name: 'Javier Rodríguez',
+    text: 'Vendí mi auto con ellos y me ofrecieron un excelente precio. El servicio de consignación es muy eficiente y transparente.',
+    stars: 5
+  },
+    {
     name: 'Ana García',
     text: 'Muy buena atención al cliente. Respondieron todas mis dudas y me ayudaron con el financiamiento. Estoy feliz con mi nuevo SUV.',
     stars: 4
@@ -22,50 +42,97 @@ const comments: CommentProps[] = [
 ];
 
 export const CommentsSection = () => {
+
+  const [showForm, setShowForm] = useState(false);
+  const queryClient = useQueryClient();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['comments'],
+    queryFn: getComments,
+    staleTime: 2629800000
+  });
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setShowForm(false);
+      }
+    };
+
+    if (showForm) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showForm]);
+
+  const handleCommentPosted = () => {
+    queryClient.invalidateQueries({ queryKey: ["comments"] });
+  };
+
   return (
-    <section className="py-16 sm:py-24">
+    <section className="pt-16 sm:pt-24">
       <div className="container mx-auto px-6">
         <h2 className="text-white text-3xl font-bold text-center mb-12">Comentarios de Nuestros Clientes</h2>
 
 
         <div
-          className="flex overflow-x-auto pb-4 [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
-          <div className="flex items-stretch p-4 gap-6">
+          className={`flex ${ ((data?.length ?? 0) <= 2) ? 'justify-center' : null  } overflow-x-auto pb-4 [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden`}
+        >
+          
 
             {
-              comments.map( comment => (
-                <Comment 
-                  key=  { comment.name }
-                  name= { comment.name } 
-                  text= { comment.text }
-                  stars={ comment.stars }
-                />
-              ))
+              (!data || data?.length === 0)
+                ? 
+                (
+                  <div className="w-full text-center py-8">
+                    <p className="text-gray-400 text-lg">
+                      No hay comentarios todavía, sé el primero en comentar...
+                    </p>
+                  </div>
+                )
+                : 
+                (
+                  <div className={`flex items-stretch p-4 gap-6 ${data.length <= 2 ? "justify-center" : ""}`}>
+                    {/* { data.length === 1 || data.length === 2 && <Comment hidden/> } */}
+                    {data?.map(comment => (
+                      <Comment
+                        key={comment._id}
+                        name={comment.name}
+                        text={comment.text}
+                        stars={comment.stars}
+                        // className={data.length <= 2 ? "mx-auto" : ""}
+                      />
+                    ))}
+                    {/* { data.length === 2 && <Comment hidden/> } */}
+                  </div>
+              )
             }
 
+          
 
-            {/* <div className="flex flex-col gap-4 rounded-lg bg-card-dark p-6 min-w-[320px] sm:min-w-[380px]">
-              <div className="flex items-center gap-4">
-                <Image className="w-12 h-12 rounded-full" alt="Foto de Ana García"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJKzkxdazHJJVKjZ7StVAJ1BgG-AzToX7Zju7iksbPnRALTrPI6bpwynCfj1hC-0EN6kEVYiYmJLJ1N8bIiduMGe4gn3e3Q3Htln64w02dDyTQ6dCpLL60JscjB3FNTPmzZKCY7w6y2xkHfA14t9dKTmZkMKY2pwMxukjTJOWczk7hhVMjyd6q-cpMUFJShc346JgrNHUEgFD0-zXoRn6OzCVHeo_bLABsbI0ycwuOXhWH2BWefHRyUBeK8Bj8XUPCMP7Pzhwb6ebQ" />
-                <div>
-                  <h4 className="text-white font-bold">Ana García</h4>
-                  <div className="flex text-primary">
-                    <span className="material-symbols-outlined !text-base">star</span><span
-                      className="material-symbols-outlined !text-base">star</span><span
-                        className="material-symbols-outlined !text-base">star</span><span
-                          className="material-symbols-outlined !text-base">star</span><span
-                            className="material-symbols-outlined !text-base">star_half</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-text-muted-dark text-sm">"Muy buena atención al cliente. Respondieron todas mis dudas y
-                me ayudaron con el financiamiento. Estoy feliz con mi nuevo SUV."</p>
-            </div> */}
-
-          </div>
+        </div>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <button
+            className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors"
+            onClick={() => setShowForm(true)}
+          >
+            <span className="truncate">Dejar comentario</span>
+          </button>
+          {/* <button
+              className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-card-border-dark text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-80 transition-opacity">
+              <span className="truncate">Dejar comentario</span>
+            </button> */}
         </div>
       </div>
+      <Modal
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+      >
+        <CommentForm onSuccess={handleCommentPosted} />
+      </Modal>
     </section>
   )
 }

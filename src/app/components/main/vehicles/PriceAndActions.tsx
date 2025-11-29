@@ -1,3 +1,10 @@
+import { BiGasPump } from "react-icons/bi";
+import { HiOutlineBolt } from "react-icons/hi2";
+import { MdOutlineCalendarToday } from "react-icons/md";
+import { PiEngineBold } from "react-icons/pi";
+import { SiSpeedtest } from "react-icons/si";
+import { TbManualGearbox } from "react-icons/tb";
+
 interface Props {
   brand:        string
   model:        string
@@ -54,42 +61,50 @@ export const PriceAndActions = ({
           <h3 className="text-lg font-bold mb-4 text-white">Especificaciones</h3>
           <div className="grid grid-cols-2 gap-x-4 gap-y-5">
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary text-2xl">calendar_today</span>
+              {/* <span className="material-symbols-outlined text-primary text-2xl">calendar_today</span> */}
+              <MdOutlineCalendarToday size={ 23 } className="text-primary"/> 
+              
               <div>
                 <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Año</p>
                 <p className="font-semibold text-white">{ year }</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary text-2xl">speed</span>
+              {/* <span className="material-symbols-outlined text-primary text-2xl">speed</span> */}
+              <SiSpeedtest size={ 22 } className="text-primary"/>
               <div>
                 <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Kilometraje</p>
                 <p className="font-semibold text-white">{ mileage.toLocaleString('en-US') } km</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary text-2xl">settings</span>
+              {/* <span className="material-symbols-outlined text-primary text-2xl">settings</span> */}
+              <PiEngineBold size={ 22 } className="text-primary"/>
               <div>
                 <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Motor</p>
                 <p className="font-semibold text-white">{ motor }</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary text-2xl">auto_transmission</span>
+              {/* <span className="material-symbols-outlined text-primary text-2xl">auto_transmission</span> */}
+              <TbManualGearbox size={ 31 } className="text-primary"/>
+              
               <div>
                 <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Transmisión</p>
                 <p className="font-semibold text-white">{ transmission }</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary text-2xl">local_gas_station</span>
+              {/* <span className="material-symbols-outlined text-primary text-2xl">local_gas_station</span> */}
+              <BiGasPump size={ 24 } className="text-primary"/>
               <div>
                 <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Combustible</p>
                 <p className="font-semibold text-white">{ typeOfOil }</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-primary text-2xl">bolt</span>
+              {/* <span className="material-symbols-outlined text-primary text-2xl">bolt</span> */}
+              <HiOutlineBolt size={ 23 } className="text-primary"/>
               <div>
                 <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Potencia</p>
                 <p className="font-semibold text-white">{ horsePower } HP</p>

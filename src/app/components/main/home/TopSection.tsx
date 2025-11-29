@@ -18,10 +18,11 @@ export const TopSection = () => {
             className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
             <span className="truncate">Ver Inventario</span>
           </Link>
-          <button
+          <Link 
+            href={'/contact'}
             className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-card-border-dark text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-80 transition-opacity">
             <span className="truncate">Pedir una cita</span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>
