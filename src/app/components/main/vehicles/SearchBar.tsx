@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 export const SearchBar = () => {
   const router = useRouter();
@@ -29,8 +30,9 @@ export const SearchBar = () => {
       </p>
       <label className="flex flex-col min-w-40 h-12 w-full">
         <div className="flex w-full flex-1 items-stretch rounded-lg h-full bg-gray-100 dark:bg-card-border-dark">
-          <div className="text-gray-500 dark:text-text-muted-dark flex items-center justify-center pl-4">
-            <span className="material-symbols-outlined">search</span>
+          <div className="text-gray-500 dark:text-text-muted-dark flex items-center justify-center p-4">
+            {/* <span className="material-symbols-outlined">search</span> */}
+            <FaSearch size={ 23 } />
           </div>
           <input
             value={search}

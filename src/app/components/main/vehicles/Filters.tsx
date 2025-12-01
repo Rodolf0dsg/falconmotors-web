@@ -147,7 +147,7 @@ export const Filters = () => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2" htmlFor="price">Rango de
               Precio</label>
             <input
@@ -166,7 +166,7 @@ export const Filters = () => {
               <span className="text-sm font-medium dark:text-gray-300">{ price }</span>
               <span>$100,000+</span>
             </div>
-          </div>
+          </div> */}
 
           <button
             className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors"

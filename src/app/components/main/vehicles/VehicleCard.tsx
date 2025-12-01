@@ -60,7 +60,7 @@ export const VehicleCard = ({
                 { brand }
               </p>
             </div>
-            <p className="text-2xl font-black price-highlight">${ price.toLocaleString('en-US') }</p>
+            {/* <p className="text-2xl font-black price-highlight">${ price.toLocaleString('en-US') }</p> */}
           </div>
         </Link>
   )

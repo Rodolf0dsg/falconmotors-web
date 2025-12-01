@@ -4,6 +4,7 @@ import { MdOutlineCalendarToday } from "react-icons/md";
 import { PiEngineBold } from "react-icons/pi";
 import { SiSpeedtest } from "react-icons/si";
 import { TbManualGearbox } from "react-icons/tb";
+import { VehicleDescription } from "./VehicleDescription";
 
 interface Props {
   brand:        string
@@ -113,6 +114,9 @@ export const PriceAndActions = ({
           </div>
         </div>
       </div>
+
+      <VehicleDescription/>
+
     </div>
   )
 }

@@ -48,16 +48,19 @@ export const VehicleGallery = ({
   const currentImageUrl = selectedThumbnails[selectedThumbnailIndex]?.url ?? "";
   
   return (
-    <div className="lg:col-span-3">
+    <div className="lg:col-span-3 lg:sticky lg:top-24">
       <div className="flex flex-col md:flex-row gap-4 items-start">
 
-        <ThumbnailGallery 
-          images={selectedThumbnails}
-          selectedImageIndex={selectedThumbnailIndex}
-          onThumbnailSelect={handleThumbnailSelect}
-        />
+        <div className="relative w-full md:w-auto order-2 md:order-1">
+          <ThumbnailGallery 
+            images={selectedThumbnails}
+            selectedImageIndex={selectedThumbnailIndex}
+            onThumbnailSelect={handleThumbnailSelect}
+          />
+          <div className="absolute bottom-0 left-0 right-4 h-16 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent pointer-events-none hidden md:block"/>
+        </div>
 
-        <div className="flex-1 order-1 md:order-2">
+        <div className="flex-1 order-1 md:order-2 lg:sticky lg:top-24 w-full">
           <div
             className="aspect-4/3 w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl cursor-pointer"
             data-alt={`Vista frontal del Toyota Corolla XSE color ${selectedColor}`}
