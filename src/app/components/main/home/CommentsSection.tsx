@@ -46,7 +46,7 @@ export const CommentsSection = () => {
   const [showForm, setShowForm] = useState(false);
   const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['comments'],
     queryFn: getComments,
     staleTime: 2629800000
@@ -69,7 +69,7 @@ export const CommentsSection = () => {
   }, [showForm]);
 
   const handleCommentPosted = () => {
-    queryClient.invalidateQueries({ queryKey: ["comments"] });
+    queryClient.invalidateQueries({ queryKey: ["comments"] });  
   };
 
   return (

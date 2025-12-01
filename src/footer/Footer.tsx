@@ -32,9 +32,24 @@ export const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Contacto</h4>
             <ul className="space-y-2 text-sm">
-              <li><a className="hover:text-primary" href="#">info@falconmotors.com</a></li>
-              <li><a className="hover:text-primary" href="#">+58 (234)567-890</a></li>
-              <li><span>Av. Intercomunal Alí Primera, Punto Fijo</span></li>
+              <li>
+                <a className="hover:text-primary" href="mailto:Motorsfalconca@gmail.com" target="_blank">
+                  Motorsfalconca@gmail.com
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-primary" href="#">
+                  +58 (414) 685-3207
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-primary" href="#">
+                  +58 (422) 444-8128
+                </a>
+              </li>
+              <li>
+                <span>Av. Intercomunal Alí Primera, Punto Fijo</span>
+              </li>
             </ul>
           </div>
  

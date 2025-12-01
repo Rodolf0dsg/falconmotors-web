@@ -12,7 +12,7 @@ export const ContactInfo = () => {
           <li className="flex items-center">
             {/* <span className="material-symbols-outlined text-primary mr-3">mail</span> */}
             <MdMailOutline size={ 24 } className="text-primary mr-3" />
-            <a className="hover:text-primary" href="mailto:contacto@concesionario.com">contacto@concesionario.com</a>
+            <a className="hover:text-primary" href="mailto:motorsfalconca@gmail.com">motorsfalconca@gmail.com</a>
           </li>
           <li className="flex items-center">
             {/* <span className="material-symbols-outlined text-primary mr-3">call</span> */}
@@ -30,8 +30,8 @@ export const ContactInfo = () => {
           Horarios de Atención
         </h3>
         <ul className="space-y-2 text-text-muted-light dark:text-text-muted-dark">
-          <li className="flex justify-between"><span>Lunes a Viernes:</span> <span>9:00 AM - 6:00 PM</span></li>
-          <li className="flex justify-between"><span>Sábado:</span> <span>10:00 AM - 2:00 PM</span></li>
+          <li className="flex justify-between"><span>Lunes a Viernes:</span> <span>8:00 AM - 6:00 PM</span></li>
+          <li className="flex justify-between"><span>Sábado:</span> <span>8:30 AM - 1:00 PM</span></li>
           <li className="flex justify-between"><span>Domingo:</span> <span>Cerrado</span></li>
         </ul>
       </div>

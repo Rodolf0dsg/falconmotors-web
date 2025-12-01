@@ -24,7 +24,7 @@ export const QuestionSection = () => {
                 <span className="material-symbols-outlined">expand_more</span>
               </span>
             </summary>
-            <p className="text-text-muted-dark mt-4">¡Claro que sí! Aceptamos vehículos como parte de pago. Realizamos una
+            <p className="text-text-muted-dark mt-4">¡Claro que sí! Aceptamos vehículos <span className="text-primary">en consignacion</span> como parte de pago. Realizamos una
               tasación profesional y transparente para ofrecerte el mejor valor por tu auto actual.</p>
           </details>
           <details className="group bg-background-dark p-6 rounded-lg">
@@ -35,8 +35,7 @@ export const QuestionSection = () => {
               </span>
             </summary>
             <p className="text-text-muted-dark mt-4">Todos nuestros vehículos usados certificados vienen con una garantía
-              limitada que cubre los componentes principales del motor y la transmisión, para que compres con total
-              confianza.</p>
+              limitada, que cubre <span className="text-primary">los primeros 2 años</span> o <span className="text-primary">50.000 Kilometros</span> lo que se cumpla primero</p>
           </details>
         </div>
       </div>

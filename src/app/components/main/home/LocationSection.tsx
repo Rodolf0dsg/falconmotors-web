@@ -51,8 +51,8 @@ export const LocationSection = () => {
               <HiOutlineClock size={ 26 } className="text-primary" />
               <div>
                 <h4 className="text-white font-bold">Horario de Atención</h4>
-                <p className="text-text-muted-dark">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
-                <p className="text-text-muted-dark">Sábados: 10:00 AM - 4:00 PM</p>
+                <p className="text-text-muted-dark">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                <p className="text-text-muted-dark">Sábados: 8:30 AM - 1:00 PM</p>
               </div>
             </div>
           </div>
