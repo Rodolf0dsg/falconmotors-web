@@ -1,6 +1,28 @@
 import { ContactForm } from "../components/main/contact/ContactForm";
 import { ContactInfo } from "../components/main/contact/ContactInfo";
 
+export const metadata = {
+  title: 'FalconMotors | Contáctanos',
+  description:
+    '¿Tienes preguntas sobre nuestros autos nuevos y usados? Ponte en contacto con FalconMotors para recibir asesoría personalizada, opciones de financiamiento y atención rápida.',
+  keywords: [
+    'contacto FalconMotors',
+    'autos nuevos',
+    'autos usados',
+    'vehículos en venta',
+    'financiamiento de autos',
+    'servicio al cliente',
+    'soporte FalconMotors',
+  ],
+  // openGraph: {
+  //   title: 'FalconMotors | Contáctanos',
+  //   description:
+  //     'Comunícate con FalconMotors para resolver tus dudas sobre autos, financiamiento y servicios.',    
+  //   siteName: 'FalconMotors',
+  //   locale: 'es_ES',
+  //   type: 'website',
+  // },
+};
 
 export default function ContactPage() {
   return (
