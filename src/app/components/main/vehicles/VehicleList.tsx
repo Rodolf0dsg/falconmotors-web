@@ -5,6 +5,7 @@ import { VehicleCard } from "./VehicleCard";
 import { getVehicles } from "@/src/api/Vehicles";
 import { Loader } from "../../Query/Loader";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export const VehicleList = () => {
 
@@ -57,7 +58,9 @@ export const VehicleList = () => {
         }
       </div>
 
-      <CustomPagination pages={ data?.pages }/>
+      <Suspense fallback={<Loader size={ 16 }/>}>
+        <CustomPagination pages={ data?.pages }/>
+      </Suspense>
     </>
   )
 }
