@@ -34,9 +34,9 @@ export const VehicleCard = ({
               </div>)
             }
           </div>
-          <div className="p-4 pt-0">
-            <p className="text-gray-900 dark:text-white text-lg font-bold leading-normal mb-2">{ brand } { model }</p>
-            <div className="text-gray-600 dark:text-text-muted-dark text-sm space-y-1 mb-3">
+          <div className="p-4 pt-0 grow flex flex-col">
+            <h3 className="text-gray-900 dark:text-white text-xl font-bold leading-normal mb-3">{ brand } { model }</h3>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600 dark:text-[#b99d9d] text-sm mt-auto">
               <p className="flex items-center gap-2">
                 {/* <span className="material-symbols-outlined text-base">calendar_today</span>  */}
                 {/* <IoCalendarClearOutline size={ 20 } /> */}

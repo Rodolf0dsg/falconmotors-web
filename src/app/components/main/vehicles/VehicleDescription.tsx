@@ -1,4 +1,6 @@
-import Image from "next/image"
+import Image from "next/image";
+
+const text = '<p>JMC Grand Avenue 2025<br/>0 kilómetros</p><br/><ul><li>📌 Motor Ford Puma 2.3L Turbo con 250HP</li><li>📌 Torque aproximado de 380 Nm</li><li>📌 Transmisión automática de 8 velocidades 4x4</li><li>📌 Consumo combinado cercano a 10 km/L</li><li>📌 Capacidad de carga: 1000 Kg</li><li>📌 Suspensión reforzada para trabajo pesado</li><li>📌 Asientos ergonómicos con tapicería premium</li><li>📌 Sistema de frenos ABS + EBD</li><li>📌 2 airbags frontales y anclajes Isofix</li><li>📌 Cámara de retroceso y sensores de parqueo</li><li>📌 Interior amplio con tablero digital</li><li>📌 Tecnología Keyless Entry y control remoto</li></ul><br/><p>🏦 Crédito Automotriz<br/>💳 Cancela hasta el 50% de inicial<br/>✔️ Vehículo revisado y con garantía de 2 años y/o hasta 50.000 kilómetros</p><br/><p>\"Potencia y confianza en cada camino\"</p>w'
 
 
 export const VehicleDescription = () => {
@@ -24,13 +26,19 @@ export const VehicleDescription = () => {
           <p className="text-sm text-text-muted-light dark:text-text-muted-dark">AutoDeal</p>
         </div>
       </div>
-      <p className="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+
+      <div 
+        className="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed"
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
+      
+      {/* <p className="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
         El Toyota Corolla XSE 2023 combina un diseño elegante y deportivo con un rendimiento excepcional. Equipado
         con un motor de 2.0 litros y 169 caballos de fuerza, ofrece una conducción ágil y eficiente. El interior
         cuenta con asientos de cuero sintético SofTex®, una pantalla táctil de 8 pulgadas compatible con Apple
         CarPlay® y Android Auto™, y el avanzado sistema de seguridad Toyota Safety Sense™ 2.0. Este vehículo es
         ideal para quienes buscan estilo, tecnología y confiabilidad en un solo paquete.
-      </p>
+      </p> */}
     </div>
   )
 }

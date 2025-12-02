@@ -73,7 +73,7 @@ export const Header1 = () => {
 
             {/* Botón cita */}
             <div className="hidden lg:flex items-center">
-              <Link href={'/contact'}
+              <Link href={'/services#form'}
                 className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
                 <span className="truncate">Agendar una cita</span>
               </Link>

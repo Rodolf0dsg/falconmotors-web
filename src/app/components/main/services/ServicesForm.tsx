@@ -59,8 +59,9 @@ export const ServicesForm = () => {
       <div className="flex flex-wrap justify-center text-center gap-3 p-4">
         <div className="flex w-full flex-col gap-3">
           <p className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Agenda tu Cita</p>
-          <p className="text-text-muted-dark text-base font-normal leading-normal">Completa el formulario y uno de
-            nuestros asesores te contactará para confirmar tu cita.</p>
+          <p className="text-text-muted-dark text-base font-normal leading-normal">Completa el formulario para contactarte con
+            uno de nuestros asesores
+          </p>
         </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 max-w-xl mx-auto flex flex-col gap-6">
@@ -98,6 +99,7 @@ export const ServicesForm = () => {
                       backgroundColor: "rgba(255,255,255,0.05)",
                       borderColor: "rgba(255,255,255,0.1)",
                       color: "white",
+                      height: "calc(var(--spacing) * 12)"
                     }),
                     singleValue: (base) => ({
                       ...base,

@@ -41,7 +41,7 @@ export default function ServicesPage() {
       </section>
 
       <section>
-        <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestros
+        <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pt-5">Nuestros
           Servicios</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
           <div
@@ -158,6 +158,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <div hidden id="form"></div>
 
       <ServicesForm/>
       

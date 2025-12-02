@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { ContactForm } from "../components/main/contact/ContactForm";
 import { ContactInfo } from "../components/main/contact/ContactInfo";
+import { Loader } from "../components/Query/Loader";
 
 export const metadata = {
   title: 'FalconMotors | Contáctanos',
@@ -34,8 +36,11 @@ export default function ContactPage() {
             necesitas ayuda? Envíanos un mensaje y te responderemos a la brevedad.</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+
+          <Suspense fallback={ <Loader size={ 16 }/> } >
+            <ContactForm/>
+          </Suspense>
           
-          <ContactForm/>
 
           <ContactInfo />
 
