@@ -1,13 +1,66 @@
+'use client'
+import Link from "next/link";
+import { useRef, useEffect } from "react";
 
 
 export const StockSection = () => {
+
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const rafIdRef = useRef<number | null>(null)
+  const isHoveringRef = useRef(false)
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const speed = 0.5
+
+    const tick = () => {
+      
+      if (!isHoveringRef.current && el.scrollWidth > el.clientWidth) {
+        el.scrollLeft += speed
+        
+        if (el.scrollLeft >= el.scrollWidth - el.clientWidth) {
+          el.scrollLeft = 0
+        }
+      }
+      rafIdRef.current = requestAnimationFrame(tick)
+    }
+
+    rafIdRef.current = requestAnimationFrame(tick)
+
+    return () => {
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current)
+    }
+  }, [])
+
+  const handleMouseEnter = () => { isHoveringRef.current = true }
+  const handleMouseLeave = () => { isHoveringRef.current = false }
+
   return (
     <section className="py-16 sm:py-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-black text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-8 text-center">Stock
-          Destacado</h2>
+        <div className="flex items-center justify-between px-4 pb-6">
+          <h2 className="text-black text-3xl font-bold leading-tight tracking-[-0.015em]">
+            Stock Destacado
+          </h2>
+          <Link
+            href={'/vehicles'}
+            className="p-2 rounded-md bg-red-600 text-white text-sm font-semibold 
+                       border border-gray-300 hover:bg-red-700 transition-colors h-10 cursor-pointer"
+          >
+            Ver más &gt;
+          </Link>
+        </div>
+
+
         <div
-          className="flex overflow-x-auto pb-4 [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          className="flex overflow-x-auto pb-4 [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          ref={scrollRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+
+        >
           <div className="flex items-stretch p-4 gap-6">
 
 
@@ -25,11 +78,12 @@ export const StockSection = () => {
                     km</p>
                 </div>
                 <button
-                  className="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-card-border-light text-black border-red-400 border-1 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary transition-colors">
+                  className="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-card-border-light text-black border-red-400 border text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary transition-colors">
                   <span className="truncate">Ver Detalles</span>
                 </button>
               </div>
             </div>
+
             <div className="flex h-full flex-1 flex-col gap-4 rounded-lg bg-card-dark shadow-lg min-w-72">
               <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg"
                 data-alt="Side profile of a blue BMW X5"
