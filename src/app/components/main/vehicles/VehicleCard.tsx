@@ -13,7 +13,7 @@ export const VehicleCard = ({
   return (
        <Link
           href={ `/vehicles/${id}` }
-          className="flex flex-col gap-3 rounded-xl bg-gray-100 dark:bg-[#1c1c1c] border border-gray-200 dark:border-card-border-dark overflow-hidden group cursor-pointer"
+          className="flex flex-col gap-3 rounded-xl bg-whire border border-gray-300 overflow-hidden group cursor-pointer"
         >
           <div className="relative">
             <div
@@ -35,8 +35,8 @@ export const VehicleCard = ({
             }
           </div>
           <div className="p-4 pt-0 grow flex flex-col">
-            <h3 className="text-gray-900 dark:text-white text-xl font-bold leading-normal mb-3">{ brand } { model }</h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600 dark:text-[#b99d9d] text-sm mt-auto">
+            <h3 className="text-black text-xl font-bold leading-normal mb-3">{ brand } { model }</h3>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600 text-sm mt-auto">
               <p className="flex items-center gap-2">
                 {/* <span className="material-symbols-outlined text-base">calendar_today</span>  */}
                 {/* <IoCalendarClearOutline size={ 20 } /> */}

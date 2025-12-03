@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function VehiclePage() {
 
   return (
-    <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16">
+    <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16 bg-gray-100">
       <div className="flex flex-col lg:flex-row lg:gap-8">
 
         <Suspense fallback={<Loader size={ 16 }/>}>

@@ -64,11 +64,10 @@ export const CommentForm = ({ onSuccess }: Props) => {
   }
 
   return (
-    <div className="mt-12 bg-card-dark rounded-xl p-6 shadow-lg max-w-md mx-auto">
-      <h3 className="text-white text-lg font-bold mb-4 text-center">Deja tu comentario</h3>
+    <div className="mt-12 bg-white rounded-xl p-6 shadow-lg max-w-md mx-auto">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex flex-col items-center relative">
-            <label className="text-white text-sm mb-1" htmlFor="rating">Tu valoración</label>
+            <label className="text-black text-sm mb-1" htmlFor="rating">Tu valoración</label>
 
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -106,11 +105,11 @@ export const CommentForm = ({ onSuccess }: Props) => {
 
         </div>
         <div className="relative">
-          <label className="text-white text-sm font-medium mb-1 block" htmlFor="name">
+          <label className="text-text-muted-light text-sm font-medium mb-1 block" htmlFor="name">
             Nombre
           </label>
           <input
-            className="w-full bg-background-dark border border-card-border-dark rounded-md px-3 py-2 text-sm text-white focus:ring-primary focus:border-primary"
+            className="w-full bg-white border-2 border-gray-300 rounded-md px-3 py-2 text-sm text-black form-input focus:outline-0"
             id="name"
             placeholder="Tu nombre"
             type="text"
@@ -123,9 +122,9 @@ export const CommentForm = ({ onSuccess }: Props) => {
           { errors.name && <span className="form-error">{errors.name.message}</span>}
         </div>
         <div className="relative">
-          <label className="text-white text-sm font-medium mb-1 block" htmlFor="comment">Comentario</label>
+          <label className="text-text-muted-light text-sm font-medium mb-1 block" htmlFor="comment">Comentario</label>
           <textarea
-            className="w-full bg-background-dark border border-card-border-dark rounded-md px-3 py-2 text-sm text-white focus:ring-primary focus:border-primary"
+            className="w-full bg-white border-2 border-gray-300 rounded-md px-3 py-2 text-sm text-black form-input focus:outline-0"
             id="comment"
             placeholder="Escribe tu experiencia..."
             rows={3}

@@ -8,6 +8,10 @@ export const TopSection = () => {
           backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYejjbd_6GHYyL0Z5EX-E--lPTfu1mdz-BNovNgsiIDZ4KAjj_CaCCJcowcQ5pkfILsmL55THGQZZJPzkMHVyaAtlpYdWuCv_1Q_jnqVvB04mPF99nrzZVMGw0mARxb-nIky0zVvRMdQr9RlVusCyyW3MSyrxSf1e5mbGNRyzwwNpGdi1YMG-Yxx8_1DhDt-mgRUP4-Zsqy_xPuK9-1UszphEJ81XGJpfbBpOx54q9-5NQLB8ui3TzoIkEwnn3anhenbwhKTyQ9tEN")`
         }}>
       </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-16 bg-linear-to-t from-white to-transparent -mt-3"></div>
+
+
       <div className="relative z-10 p-6 flex flex-col gap-6">
         <h1 className="text-white text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]">Encuentra el auto de
           tus sueños</h1>

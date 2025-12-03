@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export const Footer = () => {
   return (
-    <footer className="bg-card-dark text-text-muted-dark py-12">
+    <footer className="bg-card-light text-gray-600 font-semibold py-12">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -15,7 +15,7 @@ export const Footer = () => {
                     fillRule="evenodd"></path>
                 </svg> */}
                 <Image
-                  src={'/logos/Logo-dark.png'}
+                  src={'/logos/Logo-white.png'}
                   alt="Logo"
                   width={ 120 }
                   height={ 100 }
@@ -24,13 +24,13 @@ export const Footer = () => {
 
                 </Image>
               </div>
-                <h2 className="text-white text-xl font-bold">Falcon Motors</h2>
+                <h2 className="text-black text-xl font-bold">Falcon Motors</h2>
             </div>
             <p className="text-sm">Tu concesionario de confianza para autos nuevos y usados. Calidad, transparencia y el
               mejor servicio al cliente.</p>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4">Contacto</h4>
+            <h4 className="text-black font-bold mb-4">Contacto</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a className="hover:text-primary" href="mailto:Motorsfalconca@gmail.com" target="_blank">

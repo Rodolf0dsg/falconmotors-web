@@ -4,12 +4,14 @@ export const StockSection = () => {
   return (
     <section className="py-16 sm:py-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-white text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-8 text-center">Stock
+        <h2 className="text-black text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-8 text-center">Stock
           Destacado</h2>
         <div
           className="flex overflow-x-auto pb-4 [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
           <div className="flex items-stretch p-4 gap-6">
-            <div className="flex h-full flex-1 flex-col gap-4 rounded-lg bg-card-dark shadow-lg min-w-72">
+
+
+            <div className="flex h-full flex-1 flex-col gap-4 rounded-lg bg-card-light shadow-lg min-w-72 border-gray-400">
               <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg"
                 data-alt="Front view of a white Audi A4"
                 style={{
@@ -18,12 +20,12 @@ export const StockSection = () => {
               </div>
               <div className="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
                 <div>
-                  <p className="text-white text-lg font-bold leading-normal">Audi A4</p>
-                  <p className="text-text-muted-dark text-sm font-normal leading-normal">Precio: $45,000 | 2022 | 15,000
+                  <p className="text-black text-lg font-bold leading-normal">Audi A4</p>
+                  <p className="text-text-muted-light text-sm font-normal leading-normal">Precio: $45,000 | 2022 | 15,000
                     km</p>
                 </div>
                 <button
-                  className="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-card-border-dark text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary transition-colors">
+                  className="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-card-border-light text-black border-red-400 border-1 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary transition-colors">
                   <span className="truncate">Ver Detalles</span>
                 </button>
               </div>
