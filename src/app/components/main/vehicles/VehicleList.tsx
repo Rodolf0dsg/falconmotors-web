@@ -11,16 +11,16 @@ export const VehicleList = () => {
 
   const searchParams = useSearchParams();
 
-  const offset = Number(searchParams.get('page')) ?? undefined;
-  const brand =  searchParams.get('brand') ?? undefined;
-  const type =   searchParams.get('type') ?? undefined;
+  const page   = Number(searchParams.get('page')) ?? undefined;
+  const brand  = searchParams.get('brand') ?? undefined;
+  const type   = searchParams.get('type') ?? undefined;
   const search = searchParams.get('search') ?? undefined;
 
 
   const { data, isLoading } = useQuery({
-    queryKey: ['vehicles', offset, brand, type, search],
+    queryKey: ['vehicles', page, brand, type, search],
     queryFn: () => getVehicles({
-      offset, 
+      page, 
       brand, 
       type,
       search
