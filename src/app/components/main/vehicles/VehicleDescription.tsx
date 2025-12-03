@@ -1,9 +1,16 @@
 import Image from "next/image";
 
-const text = '<p>JMC Grand Avenue 2025<br/>0 kilómetros</p><br/><ul><li>📌 Motor Ford Puma 2.3L Turbo con 250HP</li><li>📌 Torque aproximado de 380 Nm</li><li>📌 Transmisión automática de 8 velocidades 4x4</li><li>📌 Consumo combinado cercano a 10 km/L</li><li>📌 Capacidad de carga: 1000 Kg</li><li>📌 Suspensión reforzada para trabajo pesado</li><li>📌 Asientos ergonómicos con tapicería premium</li><li>📌 Sistema de frenos ABS + EBD</li><li>📌 2 airbags frontales y anclajes Isofix</li><li>📌 Cámara de retroceso y sensores de parqueo</li><li>📌 Interior amplio con tablero digital</li><li>📌 Tecnología Keyless Entry y control remoto</li></ul><br/><p>🏦 Crédito Automotriz<br/>💳 Cancela hasta el 50% de inicial<br/>✔️ Vehículo revisado y con garantía de 2 años y/o hasta 50.000 kilómetros</p><br/><p>\"Potencia y confianza en cada camino\"</p>';
+// const text = '<p>JMC Grand Avenue 2025<br/>0 kilómetros</p><br/><ul><li>📌 Motor Ford Puma 2.3L Turbo con 250HP</li><li>📌 Torque aproximado de 380 Nm</li><li>📌 Transmisión automática de 8 velocidades 4x4</li><li>📌 Consumo combinado cercano a 10 km/L</li><li>📌 Capacidad de carga: 1000 Kg</li><li>📌 Suspensión reforzada para trabajo pesado</li><li>📌 Asientos ergonómicos con tapicería premium</li><li>📌 Sistema de frenos ABS + EBD</li><li>📌 2 airbags frontales y anclajes Isofix</li><li>📌 Cámara de retroceso y sensores de parqueo</li><li>📌 Interior amplio con tablero digital</li><li>📌 Tecnología Keyless Entry y control remoto</li></ul><br/><p>🏦 Crédito Automotriz<br/>💳 Cancela hasta el 50% de inicial<br/>✔️ Vehículo revisado y con garantía de 2 años y/o hasta 50.000 kilómetros</p><br/><p>\"Potencia y confianza en cada camino\"</p>';
 
+interface Props{ 
+  text?: string
+}
 
-export const VehicleDescription = () => {
+export const VehicleDescription = ({ text }: Props) => {
+  if (!text) {
+    return null;
+  }
+  
   return (
     <div
       className="mt-8 bg-surface-light rounded-xl border border-border-light p-6">

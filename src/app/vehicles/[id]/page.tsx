@@ -55,6 +55,7 @@ export default async function DetailedVehiclePage({ params }: Props) {
           motor=        { vehicle.motor }
           typeOfOil=    { vehicle.typeOfOil }
           features=     { vehicle.features }
+          description=  { vehicle.description }
         />
         
       </div>

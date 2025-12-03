@@ -19,11 +19,13 @@ interface Props {
   motor:        string;
   typeOfOil:    string;
   features?:    string[];
+  description?: string;
 }
 
 
 export const PriceAndActions = ({
-  brand, model, year, mileage, price, transmission, used, horsePower, type, motor, typeOfOil, features
+  brand, model, year, mileage, price, transmission, used,
+   horsePower, type, motor, typeOfOil, features, description
 }: Props) => {
   return (
     <div className="lg:col-span-2">
@@ -116,7 +118,7 @@ export const PriceAndActions = ({
         </div>
       </div>
 
-      <VehicleDescription/>
+      <VehicleDescription text={ description }/>
 
     </div>
   )
