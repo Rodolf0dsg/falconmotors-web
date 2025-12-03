@@ -57,7 +57,7 @@ export const VehicleGallery = ({
             selectedImageIndex={selectedThumbnailIndex}
             onThumbnailSelect={handleThumbnailSelect}
           />
-          <div className="absolute bottom-0 left-0 right-4 h-16 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent pointer-events-none hidden md:block"/>
+          <div className="absolute bottom-0 left-0 right-4 h-16 bg-gradient-to-t from-background-light to-transparent pointer-events-none hidden md:block"/>
         </div>
 
         <div className="flex-1 order-1 md:order-2 lg:sticky lg:top-24 w-full">

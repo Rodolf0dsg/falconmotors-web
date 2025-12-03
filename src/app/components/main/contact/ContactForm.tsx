@@ -42,15 +42,15 @@ export const ContactForm = () => {
   }
 
   return (
-    <div>
+    <div className="rounded-lg bg-white border border-gray-200 shadow-2xl p-4">
       <form onSubmit={ handleSubmit( onSubmit )} className="space-y-6" method="POST">
 
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <label className="flex flex-col relative">
-            <span className="text-base font-medium text-text-light dark:text-white pb-2">Nombre</span>
+            <span className="text-base font-medium text-text-light pb-2">Nombre</span>
             <input
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 ring-1 ring-transparent focus:ring-primary h-14 p-[15px] text-base font-normal leading-normal" 
+              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 bg-white border-2 border-gray-300 h-14 p-[15px] text-base font-normal leading-normal" 
               placeholder="Ingresa tu nombre"  
               type="text"
               { ...register("nombre", { 
@@ -64,9 +64,9 @@ export const ContactForm = () => {
 
 
           <label className="flex flex-col relative">
-            <span className="text-base font-medium text-text-light dark:text-white pb-2">Apellido</span>
+            <span className="text-base font-medium text-text-light pb-2">Apellido</span>
             <input
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 ring-1 ring-transparent focus:ring-primary h-14 p-[15px] text-base font-normal leading-normal"
+              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 bg-white border-2 border-gray-300 h-14 p-[15px] text-base font-normal leading-normal"
               placeholder="Ingresa tu apellido"               
               type="text"
               {...register("apellido", { 
@@ -81,9 +81,9 @@ export const ContactForm = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <label className="flex flex-col relative">
-            <span className="text-base font-medium text-text-light dark:text-white pb-2">Email</span>
+            <span className="text-base font-medium text-text-light pb-2">Email</span>
             <input
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 ring-1 ring-transparent focus:ring-primary h-14 p-[15px] text-base font-normal leading-normal"
+              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 bg-white border-2 border-gray-300 h-14 p-[15px] text-base font-normal leading-normal"
               placeholder="Ingresa tu email"  
               type="email" 
               { ...register("email", { 
@@ -101,9 +101,9 @@ export const ContactForm = () => {
 
 
           <label className="flex flex-col relative">
-            <span className="text-base font-medium text-text-light dark:text-white pb-2">Teléfono</span>
+            <span className="text-base font-medium text-text-light pb-2">Teléfono</span>
             <input
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 ring-1 ring-transparent focus:ring-primary h-14 p-[15px] text-base font-normal leading-normal"
+              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 bg-white border-2 border-gray-300 h-14 p-[15px] text-base font-normal leading-normal"
               placeholder="Ingresa tu teléfono" 
               type="tel" 
               { ...register("telefono", { 
@@ -123,9 +123,9 @@ export const ContactForm = () => {
 
         <div>
           <label className="flex flex-col relative">
-            <span className="text-base font-medium text-text-light dark:text-white pb-2">Motivo de contacto</span>
+            <span className="text-base font-medium text-text-light pb-2">Motivo de contacto</span>
             <select
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 ring-1 ring-transparent focus:ring-primary h-14 p-[15px] text-base font-normal leading-normal"
+              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 bg-white border-2 border-gray-300 h-14 p-[15px] text-base font-normal leading-normal"
               { ...register("motivo", { required: "Este campo es obligatorio" }) }
             >
               <option value=""                                >Selecciona un motivo...</option>
@@ -140,9 +140,9 @@ export const ContactForm = () => {
 
         <div>
           <label className="flex flex-col">
-            <span className="text-base font-medium text-text-light dark:text-white pb-2">Mensaje</span>
+            <span className="text-base font-medium text-text-light pb-2">Mensaje</span>
             <textarea
-              className="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg focus:outline-0 ring-1 ring-transparent focus:ring-primary min-h-36 p-[15px] text-base font-normal leading-normal"
+              className="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg focus:outline-0 bg-white border-gray-300 border-2 min-h-36 p-[15px] text-base font-normal leading-normal"
               placeholder="Escribe tu mensaje aquí..." 
               rows={5}
               { ...register("mensaje", {

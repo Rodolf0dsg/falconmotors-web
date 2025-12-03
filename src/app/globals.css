@@ -17,7 +17,9 @@
   --color-background-light: #f8f6f6;
   --color-background-dark: #181111;
   --color-card-dark: #271c1c;
+  --color-card-light: #E3E3E3;
   --color-card-border-dark: #392828;
+  --color-card-border-light: #F5F0F0;
   --color-text-muted-dark: #b99d9d;
 
   --color-surface-light: #ffffff;
@@ -72,7 +74,7 @@ body {
 
 /* estilos del formulario de contacto */
 
-.form-input {
+/* .form-input {
   background-color: #f0eeee;
   border-color: #e0dcdc;
   color: #374151;
@@ -84,7 +86,7 @@ body {
   border-color: #543b3b;
   color: #fff;
   --tw-ring-color: #ec1313
-}
+} */
 
 .form-input:focus {
   border-color: #ec1313

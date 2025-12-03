@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="">
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -33,9 +33,10 @@ export default function RootLayout({
         />
 
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
       </head>
       <body
-        className={`${inter.variable} font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200`}
+        className={`${inter.variable} font-display bg-background-light text-gray-800`}
       >
         <div className="relative w-full">
           <Header1 />
