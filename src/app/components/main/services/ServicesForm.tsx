@@ -106,7 +106,7 @@ export const ServicesForm = () => {
                     }),
                     singleValue: (base) => ({
                       ...base,
-                      color: "white",
+                      color: "black",
                     }),
                     menu: (base) => ({
                       ...base,
@@ -122,10 +122,11 @@ export const ServicesForm = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="relative cursor-pointer" onClick={() => (document.getElementById("date") as HTMLInputElement )?.showPicker()}>
+          <div className="relative cursor-pointer">
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="fecha">Fecha Preferida</label>
             <input
               className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-white/40 transition-colors form-input focus:outline-0"
+              onClick={() => (document.getElementById("fecha") as HTMLInputElement )?.showPicker()}
               id="fecha"  
               type="date"
               {...register('date', {
@@ -159,10 +160,11 @@ export const ServicesForm = () => {
             />
             {errors.date && <span className="form-error">{errors.date.message}</span>}
           </div>
-          <div className="relative cursor-pointer" onClick={() => (document.getElementById("hora") as HTMLInputElement )?.showPicker()}>
+          <div className="relative cursor-pointer">
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="hora">Hora</label>
             <input
               className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black transition-colors form-input focus:outline-0"
+              onClick={() => (document.getElementById("hora") as HTMLInputElement )?.showPicker()}
               id="hora"
               type="time"
               {...register('time', {
