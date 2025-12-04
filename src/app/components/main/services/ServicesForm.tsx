@@ -11,10 +11,10 @@ interface ServiceOption {
 }
 
 interface Inputs {
-  name: string;
-  service: ServiceOption;
-  date: string;
-  time: string;
+  name:     string;
+  service:  ServiceOption;
+  date:     string;
+  time:     string;
   message?: string;
 }
 
@@ -52,7 +52,7 @@ export const ServicesForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
     const message = buildMessage(data);
     const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, "_blank"); // abre WhatsApp en nueva pestaña
+    window.open(whatsappLink, "_blank");
   }
 
   return (
@@ -122,7 +122,7 @@ export const ServicesForm = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="relative cursor-pointer" onClick={() => (document.getElementById("hora") as HTMLInputElement )?.showPicker()}>
+          <div className="relative cursor-pointer" onClick={() => (document.getElementById("date") as HTMLInputElement )?.showPicker()}>
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="fecha">Fecha Preferida</label>
             <input
               className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-white/40 transition-colors form-input focus:outline-0"
@@ -133,8 +133,8 @@ export const ServicesForm = () => {
                 validate: (v: string) => {
                   if (!v) return "La fecha es obligatoria";
 
-                  const selected = parseLocalDate(v);     // ✅ local
-                  const today = startOfDay(new Date());   // ✅ local
+                  const selected = parseLocalDate(v);   
+                  const today = startOfDay(new Date()); 
 
                   const day = selected.getDay(); 
 
