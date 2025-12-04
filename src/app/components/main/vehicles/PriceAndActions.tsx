@@ -1,3 +1,4 @@
+'use client';
 import { BiGasPump } from "react-icons/bi";
 import { HiOutlineBolt } from "react-icons/hi2";
 import { MdOutlineCalendarToday } from "react-icons/md";
@@ -27,6 +28,13 @@ export const PriceAndActions = ({
   brand, model, year, mileage, price, transmission, used,
    horsePower, type, motor, typeOfOil, features, description
 }: Props) => {
+
+  const openWhatsAppChat = () => {
+    const text = `Hola, estoy interesado en el vehículo ${brand} ${model}. \n¿Podrían darme más información?`;
+    const phoneNumber = `584146853207`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`);
+  };
+
   return (
     <div className="lg:col-span-2">
       <div
@@ -46,7 +54,9 @@ export const PriceAndActions = ({
             </div> */}
             
             <button
-              className="cursor-pointer w-full flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-linear-to-b from-primary to-red-700 text-white text-base font-bold shadow-lg hover:shadow-primary/40 transition-shadow">
+              className="cursor-pointer w-full flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-linear-to-b from-primary to-red-700 text-white text-base font-bold shadow-lg hover:shadow-primary/40 transition-shadow"
+              onClick={ openWhatsAppChat }
+            >
               <span className="material-symbols-outlined">call</span>
               <span>Contactar Asesor</span>
             </button>
