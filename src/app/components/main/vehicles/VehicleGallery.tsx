@@ -62,8 +62,8 @@ export const VehicleGallery = ({
 
         <div className="flex-1 order-1 md:order-2 lg:sticky lg:top-24 w-full">
           <div
-            className="aspect-4/3 w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl cursor-pointer"
-            data-alt={`Vista frontal del Toyota Corolla XSE color ${selectedColor}`}
+            className="aspect-4/3 w-full bg-center bg-no-repeat bg-contain flex flex-col justify-end overflow-hidden rounded-xl cursor-pointer"
+            data-alt={`${selectedColor}`}
             style={{ backgroundImage: `url("${ currentImageUrl }")`}}
             >
             {/* <div className="p-4 bg-linear-to-t from-black/50 to-transparent">
