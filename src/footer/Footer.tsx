@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { formatPhoneNumber } from "../helpers/formatPhoneNumber"
 
 
 export const Footer = () => {
@@ -33,13 +34,13 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary" href="https://wa.me/584129257435">
-                  +58 (412) 925-7435
+                <a className="hover:text-primary" href={`https://wa.me/${process.env.NEXT_PUBLIC_MANAGER_WHATSAPP}`}>
+                  { formatPhoneNumber(process.env.NEXT_PUBLIC_MANAGER_WHATSAPP!) }
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary" href="https://wa.me/584224448128">
-                  +58 (422) 444-8128
+                <a className="hover:text-primary" href={`https://wa.me/${process.env.NEXT_PUBLIC_SERVICES_WHATSAPP}`}>
+                  { formatPhoneNumber(process.env.NEXT_PUBLIC_SERVICES_WHATSAPP!) }
                 </a>
               </li>
               <li>

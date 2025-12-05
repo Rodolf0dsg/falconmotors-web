@@ -31,7 +31,7 @@ export const PriceAndActions = ({
 
   const openWhatsAppChat = () => {
     const text = `Hola, estoy interesado en el vehículo ${brand} ${model}. \n¿Podrían darme más información?`;
-    const phoneNumber = `584146853207`;
+    const phoneNumber = process.env.NEXT_PUBLIC_MANAGER_WHATSAPP;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`);
   };
 

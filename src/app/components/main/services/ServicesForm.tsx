@@ -27,7 +27,7 @@ const serviceOptions = [
 
 export const ServicesForm = () => {
 
-  const phone = '584224448128';
+  const phone = process.env.NEXT_PUBLIC_SERVICES_WHATSAPP;
 
   const {
     register,

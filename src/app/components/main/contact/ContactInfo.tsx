@@ -1,3 +1,4 @@
+import { formatPhoneNumber } from "@/src/helpers/formatPhoneNumber"
 import { HiOutlineClock } from "react-icons/hi"
 import { MdMailOutline, MdOutlinePhone } from "react-icons/md"
 
@@ -17,7 +18,13 @@ export const ContactInfo = () => {
           <li className="flex items-center">
             {/* <span className="material-symbols-outlined text-primary mr-3">call</span> */}
             <MdOutlinePhone size={ 24 } className="text-primary mr-3" />
-            <a className="hover:text-primary" href="tel:+1234567890">+58 (422) 444-8128</a>
+            <a className="hover:text-primary" href={`https://wa.me/${ process.env.NEXT_PUBLIC_MANAGER_WHATSAPP }`}>{ formatPhoneNumber(process.env.NEXT_PUBLIC_MANAGER_WHATSAPP!) }</a>
+          </li>
+
+          <li className="flex items-center">
+            {/* <span className="material-symbols-outlined text-primary mr-3">call</span> */}
+            <MdOutlinePhone size={ 24 } className="text-primary mr-3" />
+            <a className="hover:text-primary" href={`https://wa.me/${ process.env.NEXT_PUBLIC_SERVICES_WHATSAPP }`}>{ formatPhoneNumber(process.env.NEXT_PUBLIC_SERVICES_WHATSAPP!) }</a>
           </li>
         </ul>
       </div>
