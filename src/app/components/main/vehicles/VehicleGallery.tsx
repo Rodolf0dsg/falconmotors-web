@@ -39,6 +39,7 @@ export const VehicleGallery = ({
 
   const handleColorChange = (colorName: string) => {
     setSelectedColor(colorName);
+    setSelectedThumbnailIndex(0);
   };
 
   const handleThumbnailSelect = (index: number) => {
