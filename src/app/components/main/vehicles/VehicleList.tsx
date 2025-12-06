@@ -6,6 +6,7 @@ import { getVehicles } from "@/src/api/Vehicles";
 import { Loader } from "../../Query/Loader";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { ErrorOnVehicles } from "./ErrorOnVehicles";
 
 export const VehicleList = () => {
 
@@ -17,7 +18,7 @@ export const VehicleList = () => {
   const search = searchParams.get('search') ?? undefined;
 
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['vehicles', page, brand, type, search],
     queryFn: () => getVehicles({
       page, 
@@ -25,14 +26,21 @@ export const VehicleList = () => {
       type,
       search
     }),
-    staleTime: 2629800000,
+    staleTime: 1000 * 60 * 30,
   });
 
   if( isLoading ) {
     return (
-      <div className="w-full lg:w-3/4 xl:w-4/5 text-gray-100 dark:text-red-600 flex justify-center items-start">
+      <div 
+        className="w-full lg:w-3/4 xl:w-4/5 text-red-600 flex flex-1 justify-center items-start">
         <Loader size={ 64 }/>
       </div>
+    )
+  }
+
+  if ( isError ) {
+    return (
+      <ErrorOnVehicles onRetry={ refetch } isFetching={ isLoading }/>
     )
   }
 
