@@ -17,7 +17,6 @@ export const VehicleList = () => {
   const type   = searchParams.get('type') ?? undefined;
   const search = searchParams.get('search') ?? undefined;
 
-
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['vehicles', page, brand, type, search],
     queryFn: () => getVehicles({
