@@ -32,7 +32,7 @@ export const BrandsSection = () => {
             height={ 12 }
             className="h-18 w-auto mx-auto opacity-80 hover:scale-[1.4] hover:opacity-100 transition-all duration-300"
             data-alt="Forthing logo"
-            src="/logos/Forthing-logo.svg" 
+            src="/logos/Forthing-Logo.svg" 
           />
 
           <Image
