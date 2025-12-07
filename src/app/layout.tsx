@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   title: 'FalconMotors | Autos nuevos',
   description: 'Encuentra el auto de tus sueños. Amplio inventario de vehículos con garantía y las mejores opciones de financiamiento.',
   keywords: ['autos', 'carros', 'vehículos', 'nuevos', 'usados', 'compra venta', 'FalconMotors', 'financiamiento'],
+  icons: {
+    icon: '/logos/Logo-white.png',
+    shortcut: '/logos/Logo-white.png',
+    apple: '/logos/Logo-white.png',
+  },
+
 };
 
 export default function RootLayout({
