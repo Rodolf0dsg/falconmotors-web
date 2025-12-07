@@ -13,7 +13,7 @@ export const VehicleCard = ({
   return (
        <Link
           href={ `/vehicles/${id}` }
-          className="flex flex-col gap-3 rounded-xl bg-whire border border-gray-300 overflow-hidden group cursor-pointer"
+          className="flex flex-col gap-3 rounded-xl bg-whire border border-gray-300 overflow-hidden group cursor-pointer shadow-xl"
         >
           <div className="relative">
             <div

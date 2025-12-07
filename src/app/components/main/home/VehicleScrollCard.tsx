@@ -20,7 +20,7 @@ export const VehicleScrollCard = ({
 
 
   return (
-    <div className="flex h-full flex-1 flex-col gap-4 rounded-lg bg-card-light shadow-lg min-w-72 border border-gray-400">
+    <div className="flex h-full flex-1 flex-col gap-4 rounded-lg bg-card-light shadow-xl min-w-72 border border-gray-400">
       <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg"
         data-alt="Front view of a white Audi A4"
         style={{
