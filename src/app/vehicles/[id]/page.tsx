@@ -1,4 +1,4 @@
-import { getVehicle } from '@/src/api/Vehicles';
+import { getVehicle, getVehicles } from '@/src/api/Vehicles';
 import { PriceAndActions } from '../../components/main/vehicles/PriceAndActions';
 import { VehicleGallery } from '../../components/main/vehicles/VehicleGallery';
 import { Metadata } from 'next';
@@ -28,6 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "financiamiento de autos",
     ],
   };
+};
+
+export async function generateStaticParams() {
+  const { data } = await getVehicles({ limit: 50 });
+ 
+  return data.map((vehicle) => ({
+    id: vehicle._id,
+  }))
 }
 
 
@@ -36,6 +44,7 @@ export default async function DetailedVehiclePage({ params }: Props) {
 
   const { id } = await params;
   const vehicle = await getVehicle(id);
+  
   if (!vehicle) {
     notFound();
   }
@@ -57,19 +66,19 @@ export default async function DetailedVehiclePage({ params }: Props) {
         />
 
         <PriceAndActions
-          brand={vehicle.brand}
-          model={vehicle.vehicleModel}
-          year={vehicle.year}
-          mileage={vehicle.mileage}
-          price={vehicle.price}
+          brand       ={vehicle.brand}
+          model       ={vehicle.vehicleModel}
+          year        ={vehicle.year}
+          mileage     ={vehicle.mileage}
+          price       ={vehicle.price}
           transmission={vehicle.transmission}
-          used={vehicle.used}
-          horsePower={vehicle.horsePower}
-          type={vehicle.type}
-          motor={vehicle.motor}
-          typeOfOil={vehicle.typeOfOil}
-          features={vehicle.features}
-          description={vehicle.description}
+          used        ={vehicle.used}
+          horsePower  ={vehicle.horsePower}
+          type        ={vehicle.type}
+          motor       ={vehicle.motor}
+          typeOfOil   ={vehicle.typeOfOil}
+          features    ={vehicle.features}
+          description ={vehicle.description}
         />
 
       </div>
