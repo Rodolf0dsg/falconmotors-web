@@ -18,11 +18,15 @@ export const metadata: Metadata = {
   description: 'Encuentra el auto de tus sueños. Amplio inventario de vehículos con garantía y las mejores opciones de financiamiento.',
   keywords: ['autos', 'carros', 'vehículos', 'nuevos', 'usados', 'compra venta', 'FalconMotors', 'financiamiento'],
   icons: {
-    icon: '/logos/Logo-white.png',
-    shortcut: '/logos/Logo-white.png',
-    apple: '/logos/Logo-white.png',
+    icon: [
+      { url: '/logos/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logos/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/logos/falcon.ico' }, // opcional, para compatibilidad clásica
+    ],
+    apple: { url: '/logos/apple-touch-icon.png', sizes: '180x180' },
+    shortcut: '/logos/falcon.ico',
   },
-
+  manifest: '/logos/site.webmanifest',
 };
 
 export default function RootLayout({
