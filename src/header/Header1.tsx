@@ -127,7 +127,7 @@ export const Header1 = () => {
               </ul>
             </nav>
             <div className="p-6 border-t border-gray-400">
-              <Link href="/contact"
+              <Link href="/services#form"
                 className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary  text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
                 <span className="truncate">Agendar una cita</span>
               </Link>
