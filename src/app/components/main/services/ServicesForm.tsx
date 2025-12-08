@@ -171,7 +171,7 @@ export const ServicesForm = () => {
                 required: "La hora es obligatoria",
                 validate: (v) => {
                   const [h] = v.split(":").map(Number);
-                  return h >= 8 && h <= 18 || "La hora debe estar entre 8am y 6pm";
+                  return h >= 8 && h <= 18 || "Horario comprendido entre 8am y 6pm";
                 }
               })}
             />
