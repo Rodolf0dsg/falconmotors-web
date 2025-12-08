@@ -1,4 +1,4 @@
-import { Color, Vehicle } from "@/src/Types/VehicleResponse"
+import { Color } from "@/src/Types/VehicleResponse"
 import Link from "next/link";
 import { FaCalendarAlt, FaCar, FaCogs, FaRoad } from "react-icons/fa"
 
@@ -16,8 +16,6 @@ interface VehicleScrollCardProps {
 export const VehicleScrollCard = ({  
   brand, mileage, type, year, transmission, vehicleModel, colors, _id,
  }: VehicleScrollCardProps) => {
-
-
 
   return (
     <div className="flex h-full flex-1 flex-col gap-4 rounded-lg bg-card-light shadow-xl min-w-72 border border-gray-400">
@@ -49,7 +47,6 @@ export const VehicleScrollCard = ({
               <span>{ transmission }</span>
             </div>
           </div>
-
 
         </div>
         <Link
