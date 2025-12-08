@@ -17,7 +17,7 @@ export const Header1 = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollThreshold = 100;
+      const scrollThreshold = 50;
       if (typeof window !== 'undefined') {
         setIsScrolled(window.scrollY > scrollThreshold);
       }
