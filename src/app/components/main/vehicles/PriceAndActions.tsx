@@ -40,9 +40,9 @@ export const PriceAndActions = ({
       <div
         className="bg-white rounded-xl border border-border-light p-6 flex flex-col gap-6">
         <div className="space-y-2">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-light">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-text-light">
             { brand } { model }
-          </h2>
+          </h1>
           <p className="text-lg text-text-muted-light">{ type } | Modelo { year }</p>
         </div>
 
