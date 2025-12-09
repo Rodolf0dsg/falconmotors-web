@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { ListItem } from '../app/components/header/ListItems';
+import { ListItem, ListMobileItem } from '../app/components/header/ListItems';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -123,13 +123,11 @@ export const Header1 = () => {
             <ul className="flex flex-col gap-6">
               {navItems.map(item => (
                 <li key={item.path}>
-                  <Link
-                    href={item.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-black font-medium"
-                  >
-                    {item.title}
-                  </Link>
+                  <ListMobileItem
+                    title={item.title}
+                    path={item.path}
+                    menuState={setIsMenuOpen}
+                  />
                 </li>
               ))}
             </ul>
