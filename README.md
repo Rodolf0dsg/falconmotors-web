@@ -32,11 +32,22 @@ Sigue estos pasos para que la aplicación corra en tu máquina local:
     yarn install
     ```
 3.  **Variables de Entorno:**
-    Crea el archivo `.env.local` en la raíz del proyecto. **Es crucial** para la app.
+    Crea el archivo `.env.local` o clonar el archivo `.env.template` y renombrarlo a `.env` en la raíz del proyecto. **Es crucial** para la app.
 
     ```
-    por el momento no hay variables de entorno
+    NEXT_PUBLIC_API_URL
     ```
+    La url del backend
+
+    ```
+    NEXT_PUBLIC_MANAGER_WHATSAPP
+    ```
+    El numero de whatsapp del gerente o ejecutivo de ventas
+
+    ```
+    NEXT_PUBLIC_SERVICES_WHATSAPP
+    ```
+    El numero de whatsapp del encargado de servicios
 
 ### 3. Ejecución
 
@@ -46,3 +57,9 @@ Ejecuta el servidor de desarrollo:
 npm run dev
 # o
 yarn dev
+```
+
+### Vista previa
+Observe el [resultado final](https://www.falconmotorsca.com/).
+
+O visite https://www.falconmotorsca.com/
