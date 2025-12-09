@@ -56,7 +56,7 @@ export const StockSection = () => {
           </h2>
           <Link
             href={'/vehicles'}
-            className="p-2 rounded-md bg-red-600 text-white text-sm font-semibold 
+            className="p-2 rounded-md bg-red-600 text-white text-xs md:text-sm font-semibold 
                        border border-gray-300 hover:bg-red-700 transition-colors h-10 cursor-pointer"
           >
             Ver más
