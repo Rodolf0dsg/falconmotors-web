@@ -13,7 +13,7 @@ export const ContactInfo = () => {
           <li className="flex items-center">
             {/* <span className="material-symbols-outlined text-primary mr-3">mail</span> */}
             <MdMailOutline size={ 24 } className="text-primary mr-3" />
-            <a className="hover:text-primary" href="mailto:motorsfalconca@gmail.com">motorsfalconca@gmail.com</a>
+            <a className="hover:text-primary" href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_MAIL}`}>{process.env.NEXT_PUBLIC_CONTACT_MAIL || 'noemail'}</a>
           </li>
           <li className="flex items-center">
             {/* <span className="material-symbols-outlined text-primary mr-3">call</span> */}

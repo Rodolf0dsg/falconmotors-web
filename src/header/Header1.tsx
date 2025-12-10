@@ -52,9 +52,9 @@ export const Header1 = () => {
                   <Image
                     src={'/logos/Logo-white.png'}
                     alt='Logo'
-                    width={100}
+                    width={140}
                     height={40}
-                    className='absolute -top-5 object-contain'
+                    className='absolute -top-7 object-contain'
                   />
                 </Link>
               </div>

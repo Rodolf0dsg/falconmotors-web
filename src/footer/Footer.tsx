@@ -29,8 +29,8 @@ export const Footer = () => {
             <h4 className="text-black font-bold mb-4">Contacto</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a className="hover:text-primary" href="mailto:Motorsfalconca@gmail.com" target="_blank">
-                  Motorsfalconca@gmail.com
+                <a className="hover:text-primary" href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_MAIL}`} target="_blank">
+                  {process.env.NEXT_PUBLIC_CONTACT_MAIL || 'noemail'}
                 </a>
               </li>
               <li>
