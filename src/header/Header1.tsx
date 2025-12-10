@@ -122,13 +122,12 @@ export const Header1 = () => {
           <nav className="grow p-6">
             <ul className="flex flex-col gap-6">
               {navItems.map(item => (
-                <li key={item.path}>
                   <ListMobileItem
+                    key={item.path}
                     title={item.title}
                     path={item.path}
                     menuState={setIsMenuOpen}
                   />
-                </li>
               ))}
             </ul>
           </nav>
