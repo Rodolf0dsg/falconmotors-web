@@ -75,19 +75,6 @@ export const Filters = () => {
         <h3 className="text-xl font-bold mb-6 text-gray-900">Filtros</h3>
         <form className="space-y-6">
 
-        {/* <div>
-          <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2" htmlFor="brand">Marca</label>
-          <select
-            className="w-full rounded-lg bg-gray-200 dark:bg-card-border-dark border-transparent dark:text-white focus:ring-2 focus:ring-primary focus:border-primary"
-            id="brand">
-            <option>Seleccione...</option>
-            {data?.brands.map((brand: string) => (
-              <option key={brand}>{brand}</option>
-            ))}
-          </select>
-        </div> */}
-
-
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-2" htmlFor="brand">Marca</label>
             <Select
@@ -146,27 +133,6 @@ export const Filters = () => {
               }}
             />
           </div>
-
-          {/* <div>
-            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2" htmlFor="price">Rango de
-              Precio</label>
-            <input
-              className="w-full h-2 bg-gray-300 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary"
-              id="price" type="range" 
-              min={5000}
-              max={100000}
-              step={5000}
-              value={ price }
-              onChange={(e) => setPrice(+e.target.value) }
-              onMouseUp={() => updateQueryParam('price', price.toString())}
-              onTouchEnd={() => updateQueryParam('price', price.toString())}
-            />
-            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
-              <span>$5,000</span>
-              <span className="text-sm font-medium dark:text-gray-300">{ price }</span>
-              <span>$100,000+</span>
-            </div>
-          </div> */}
 
           <button
             className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors"
