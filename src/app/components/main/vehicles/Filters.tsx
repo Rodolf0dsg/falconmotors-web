@@ -28,10 +28,6 @@ export const Filters = () => {
       : null
   );
 
-  const [price, setPrice] = useState<number>(
-    Number(searchParams.get("price")) || 5000
-  );
-
   const { data, isLoading, isError} = useQuery({
     queryKey: ['vehicleFilters'],
     queryFn: getVehicleBrandsAndTypes,
@@ -65,7 +61,6 @@ export const Filters = () => {
   const handleClear = () => {
     setBrand(null);
     setType(null);
-    setPrice(0);
     router.push('?');
   };
 
