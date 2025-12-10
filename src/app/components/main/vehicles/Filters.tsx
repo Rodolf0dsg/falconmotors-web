@@ -50,6 +50,7 @@ export const Filters = () => {
 
   const updateQueryParam = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
+    params.delete("page");
     if (value) {
       params.set(key, value);
     } else {
