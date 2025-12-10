@@ -9,11 +9,14 @@ export const metadata: Metadata = {
   title: 'Inventario de Autos | Encuentra tu Vehículo | FalconMotors',
   description: 'Explora nuestro amplio y actualizado inventario de vehículos nuevos y usados. Los mejores modelos, precios y opciones de financiamiento en Punto Fijo.',
   keywords: [
-    "autos nuevos",
-    "autos usados",
-    "vehículos FalconMotors",
-    "compra de autos",
-    "financiamiento de autos",
+    'autos nuevos',
+    'autos usados',
+    'vehículos FalconMotors',
+    'compra de autos',
+    'financiamiento de autos',
+    'autos', 'carros', 'vehículos', 'nuevos', 'usados', 'compra venta', 'FalconMotors', 'financiamiento', 'falcon',
+    'autos', 'venezuela', 'nuevos', 'carros nuevos', 'palma', 'palma motors', 'punto fijo', 'puntofijo', 'motors',
+    'izusu', 'jmc', 'forthing', 'dongfeng', 'jim', 'dfsk', 'gac', 'jetour', 'suzuki',
   ]
 };
 
