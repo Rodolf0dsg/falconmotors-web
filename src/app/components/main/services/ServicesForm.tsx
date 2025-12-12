@@ -3,6 +3,9 @@ import { parseLocalDate, startOfDay } from "@/src/helpers/dates";
 import dynamic from "next/dynamic";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { ColorSelector } from '../vehicles/ColorSelector';
+import { useState } from "react";
+import { Loader } from "../../Query/Loader";
+import { toast } from "sonner";
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
 interface ServiceOption {
@@ -11,10 +14,12 @@ interface ServiceOption {
 }
 
 interface Inputs {
-  name:     string;
-  service:  ServiceOption;
-  date:     string;
-  time:     string;
+  name: string;
+  service: ServiceOption;
+  date: string;
+  time: string;
+  phone: string;
+  email: string
   message?: string;
 }
 
@@ -28,6 +33,7 @@ const serviceOptions = [
 export const ServicesForm = () => {
 
   const phone = process.env.NEXT_PUBLIC_SERVICES_WHATSAPP;
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -49,10 +55,46 @@ export const ServicesForm = () => {
   };
 
 
-  const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
+
     const message = buildMessage(data);
     const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, "_blank");
+
+    try {
+      setIsLoading(true);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/calendar/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          date: data.date,
+          time: data.time,
+          clientName: data.name,
+          contact: data.phone,
+          notes: `${data.message}\nContactos: ${data.email} | ${data.phone}`,
+          service: data.service.label,
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        
+        toast(`Su cita fue agendada exitosamente`, {
+          action: {
+            label: `Confirmar cita`,
+            onClick: () => window.open(whatsappLink, "_blank"),
+          }
+        });
+      } else {
+        toast.info(`Error: ${result.error}`);
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("No se pudo conectar con el servidor");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -71,7 +113,7 @@ export const ServicesForm = () => {
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="nombre">Nombre</label>
             <input
               className="w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-gray-500 transition-colors form-input focus:outline-0"
-              id="nombre" 
+              id="nombre"
               type="text"
               placeholder="Ingrese su nombre..."
               {...register("name", {
@@ -121,23 +163,62 @@ export const ServicesForm = () => {
             {errors.name && <span className="form-error">{errors.name.message}</span>}
           </div>
         </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="relative">
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="telefono">Teléfono</label>
+            <input
+              className="w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-gray-500 transition-colors form-input focus:outline-0"
+              id="telefono"
+              type="tel"
+              placeholder="Ingrese su número..."
+              {...register("phone", {
+                required: "El teléfono es obligatorio",
+                pattern: {
+                  value: /^[0-9]{7,15}$/,
+                  message: "Número inválido",
+                },
+              })}
+            />
+            {errors.phone && <span className="form-error">{errors.phone.message}</span>}
+          </div>
+
+          <div className="relative">
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="correo">Correo</label>
+            <input
+              className="w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-gray-500 transition-colors form-input focus:outline-0"
+              id="correo"
+              type="email"
+              placeholder="Ingrese su correo..."
+              {...register("email", {
+                required: "El correo es obligatorio",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Correo inválido",
+                },
+              })}
+            />
+            {errors.email && <span className="form-error">{errors.email.message}</span>}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="relative cursor-pointer">
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="fecha">Fecha Preferida</label>
             <input
               className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-white/40 transition-colors form-input focus:outline-0"
-              onClick={() => (document.getElementById("fecha") as HTMLInputElement )?.showPicker()}
-              id="fecha"  
+              onClick={() => (document.getElementById("fecha") as HTMLInputElement)?.showPicker()}
+              id="fecha"
               type="date"
               {...register('date', {
                 required: "La fecha es obligatoria",
                 validate: (v: string) => {
                   if (!v) return "La fecha es obligatoria";
 
-                  const selected = parseLocalDate(v);   
-                  const today = startOfDay(new Date()); 
+                  const selected = parseLocalDate(v);
+                  const today = startOfDay(new Date());
 
-                  const day = selected.getDay(); 
+                  const day = selected.getDay();
 
                   if (startOfDay(selected) < today) return "La fecha debe ser hoy o futura";
 
@@ -164,13 +245,17 @@ export const ServicesForm = () => {
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="hora">Hora</label>
             <input
               className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black transition-colors form-input focus:outline-0"
-              onClick={() => (document.getElementById("hora") as HTMLInputElement )?.showPicker()}
+              onClick={() => (document.getElementById("hora") as HTMLInputElement)?.showPicker()}
               id="hora"
               type="time"
+              step={3600}
+              min={'8:00'}
+              max={'18:00'}
               {...register('time', {
                 required: "La hora es obligatoria",
                 validate: (v) => {
-                  const [h] = v.split(":").map(Number);
+                  const [h, m] = v.split(":").map(Number);
+                  if (m !== 0) return "Solo se permiten horas exactas (ej. 09:00)";
                   return h >= 8 && h <= 18 || "Horario comprendido entre 8am y 6pm";
                 }
               })}
@@ -183,7 +268,7 @@ export const ServicesForm = () => {
             (Opcional)</label>
           <textarea
             className="w-full bg-white border border-gray-300 rounded-lg p-4 text-black transition-colors form-input focus:outline-0"
-            id="mensaje" 
+            id="mensaje"
             rows={4}
             placeholder="Escriba su mensaje..."
             {...register('message', {
@@ -192,10 +277,14 @@ export const ServicesForm = () => {
           />
         </div>
         <button
-
+          disabled={isLoading}
           className="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/40"
           type="submit">
-          <span className="truncate">Agendar cita</span>
+          {
+            isLoading
+              ? <Loader size={24} />
+              : <span className="truncate">Agendar cita</span>
+          }
         </button>
       </form>
     </section>
