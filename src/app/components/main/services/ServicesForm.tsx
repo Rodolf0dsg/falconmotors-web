@@ -79,7 +79,7 @@ export const ServicesForm = () => {
 
       const result = await response.json();
       if (response.ok) {
-        
+
         toast(`Su cita fue agendada exitosamente`, {
           action: {
             label: `Confirmar cita`,
@@ -87,8 +87,11 @@ export const ServicesForm = () => {
           }
         });
       } else {
-        toast.info(`Error: ${result.error}`);
+        console.log("Respuesta completa del backend:", result);
+        console.log(result.error);
+        toast.info(`Error: ${result.error ?? "Error desconocido"}`);
       }
+
     } catch (err) {
       console.error(err);
       toast.error("No se pudo conectar con el servidor");
