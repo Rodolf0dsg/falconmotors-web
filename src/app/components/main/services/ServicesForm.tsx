@@ -105,7 +105,7 @@ export const ServicesForm = () => {
       <div className="flex flex-wrap justify-center text-center gap-3 p-4">
         <div className="flex w-full flex-col gap-3">
           <p className="text-black text-4xl font-black leading-tight tracking-[-0.033em]">Agenda tu Cita</p>
-          <p className="text-text-muted-light text-base font-normal leading-normal">Completa el formulario para contactarte con
+          <p className="text-text-muted-light text-base font-normal leading-normal">Completa el formulario para agendar una cita y contactarte con
             uno de nuestros asesores
           </p>
         </div>
@@ -253,13 +253,13 @@ export const ServicesForm = () => {
               type="time"
               step={3600}
               min={'8:00'}
-              max={'18:00'}
+              max={'16:00'}
               {...register('time', {
                 required: "La hora es obligatoria",
                 validate: (v) => {
                   const [h, m] = v.split(":").map(Number);
                   if (m !== 0) return "Solo se permiten horas exactas (ej. 09:00)";
-                  return h >= 8 && h <= 18 || "Horario comprendido entre 8am y 6pm";
+                  return h >= 8 && h <= 16 || "Horario comprendido entre 8am y 4pm";
                 }
               })}
             />
