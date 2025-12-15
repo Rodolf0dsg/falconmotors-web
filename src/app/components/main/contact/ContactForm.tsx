@@ -9,12 +9,13 @@ const phoneRegex = /^\+?[0-9]{7,15}$/;
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
 type Inputs = {
-  nombre: string;
-  apellido: string;
-  email: string;
-  telefono: string;
-  motivo: ContactReason;
-  mensaje: string;
+  nombre:    string;
+  apellido:  string;
+  email:     string;
+  telefono:  string;
+  motivo:    ContactReason;
+  mensaje:   string;
+  honey_pot: string;
 }
 
 enum ContactReason {
@@ -43,6 +44,14 @@ export const ContactForm = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsLoading(true);
+    
+    if (data.honey_pot) {
+      console.warn("Honeypot activado. Posible intento de spam rechazado.");
+      setIsLoading(false);
+      toast.success("Consulta enviada con éxito");
+      return;
+    }
+
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/email/send`, {
         method: "POST",
@@ -158,7 +167,7 @@ export const ContactForm = () => {
               className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 bg-white border-2 border-gray-300 h-14 p-[15px] text-base font-normal leading-normal"
               {...register("motivo", { required: "Este campo es obligatorio" })}
             >
-              <option value=""                                >Selecciona un motivo...</option>
+              <option value=""                              >Selecciona un motivo...</option>
               <option value={ContactReason.VehiclePurchase} >Compra de Vehículo</option>
               <option value={ContactReason.TechnicalService}>Servicio técnico o mecánico</option>
               <option value={ContactReason.GeneralInquiry}  >Consulta general</option>
@@ -181,6 +190,20 @@ export const ContactForm = () => {
             />
             {errors.mensaje && <span className="form-error">{errors.mensaje.message}</span>}
           </label>
+        </div>
+
+        <div 
+          className="absolute left-[-9999px]"
+          aria-hidden="true"
+        >
+          <label htmlFor="honeypot_field">Por favor, no rellene este campo:</label>
+           <input
+             type="text"
+             id="honeypot_field"
+             tabIndex={-1}
+             autoComplete="off"
+             {...register("honey_pot")}
+          />
         </div>
 
 
