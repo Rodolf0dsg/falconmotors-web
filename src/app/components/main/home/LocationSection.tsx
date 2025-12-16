@@ -34,7 +34,13 @@ export const LocationSection = () => {
               <MdOutlineLocationOn size={ 28 } className="text-primary"/>
               <div>
                 <h4 className="text-black font-bold">Dirección</h4>
-                <p className="text-text-muted-light">Av. Intercomunal Alí Primera, Punto Fijo, Venezuela</p>
+                <a 
+                  
+                  className="text-text-muted-light hover:text-primary cursor-pointer"href="https://www.google.com/maps/place/FALCON+MOTORS+CA/@11.726269,-70.181652,17z/data=!4m6!3m5!1s0x8e8593e23d597901:0xb99c17a791f5ecfe!8m2!3d11.7257538!4d-70.1817481!16s%2Fg%2F11xrhxwvps?hl=es&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                >
+                  Av. Intercomunal Alí Primera, Punto Fijo, Venezuela
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
