@@ -6,6 +6,7 @@ import { ColorSelector } from '../vehicles/ColorSelector';
 import { useState } from "react";
 import { Loader } from "../../Query/Loader";
 import { toast } from "sonner";
+import { ClockInput } from "../../services/clockInput";
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
 interface ServiceOption {
@@ -34,6 +35,7 @@ export const ServicesForm = () => {
 
   const phone = process.env.NEXT_PUBLIC_SERVICES_WHATSAPP;
   const [isLoading, setIsLoading] = useState(false);
+  const [showClock, setShowClock] = useState(false);
 
   const {
     register,
@@ -244,27 +246,65 @@ export const ServicesForm = () => {
             />
             {errors.date && <span className="form-error">{errors.date.message}</span>}
           </div>
-          <div className="relative cursor-pointer">
-            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="hora">Hora</label>
-            <input
-              className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black transition-colors form-input focus:outline-0"
-              onClick={() => (document.getElementById("hora") as HTMLInputElement)?.showPicker()}
-              id="hora"
-              type="time"
-              step={3600}
-              min={'8:00'}
-              max={'16:00'}
-              {...register('time', {
-                required: "La hora es obligatoria",
-                validate: (v) => {
-                  const [h, m] = v.split(":").map(Number);
-                  if (m !== 0) return "Solo se permiten horas exactas (ej. 09:00)";
-                  return h >= 8 && h <= 16 || "Horario comprendido entre 8am y 4pm";
-                }
-              })}
-            />
-            {errors.time && <span className="form-error">{errors.time.message}</span>}
-          </div>
+
+
+          <Controller
+            name="time"
+            control={control}
+            rules={{
+              required: "La hora es obligatoria",
+              validate: (v) => {
+                const [h, m] = v.split(":").map(Number);
+                if (m !== 0) return "Solo se permiten horas exactas (ej. 09:00)";
+                return h >= 8 && h <= 16 || "Horario comprendido entre 8am y 4pm";
+              }
+            }}
+            render={({ field }) => {
+              let displayValue = "--:--";
+              if (field.value) {
+                const [h, m] = field.value.split(":").map(Number);
+                const ampm = h >= 12 ? "PM" : "AM";
+                const hour12 = h % 12 === 0 ? 12 : h % 12;
+                displayValue = `${hour12.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")} ${ampm}`;
+              }
+
+              return (
+                <div className="relative">
+                  <label
+                    className="block text-sm font-medium text-text-muted-light mb-2"
+                    htmlFor="hora"
+                  >
+                    Hora
+                  </label>
+
+                  {/* Input visible en el formulario */}
+                  <input
+                    id="hora"
+                    type="text"
+                    readOnly
+                    value={displayValue}
+                    onClick={() => setShowClock(true)}
+                    className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black transition-colors form-input focus:outline-0"
+                  />
+
+                  {errors.time && (
+                    <span className="form-error">{errors.time.message}</span>
+                  )}
+
+                  {/* Modal del reloj */}
+                  {showClock && (
+                    <ClockInput
+                      value={field.value}
+                      onChange={field.onChange}
+                      onClose={() => setShowClock(false)}
+                    />
+                  )}
+                </div>
+              )
+            }}
+          />
+
+
         </div>
         <div>
           <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="mensaje">Mensaje Adicional
