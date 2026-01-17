@@ -51,7 +51,7 @@ export const TopSection = () => {
           </Link>
 
           <Link
-            href="/contact"
+            href="/services#form"
             className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-card-border-dark text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-80 transition-opacity"
           >
             <span className="truncate">Pedir una cita</span>
