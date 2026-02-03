@@ -14,8 +14,7 @@ export const QuestionSection = () => {
               </span>
             </summary>
             <p className="text-black mt-4">Ofrecemos múltiples opciones de financiamiento, incluyendo crédito
-              convencional, leasing y opciones de pago flexibles. Trabajamos con varios bancos para encontrar la mejor
-              tasa para ti.</p>
+              convencional. Trabajamos con el Banco <span className="text-[#003366]">BNC</span> para brindarte las mejores tarifas.</p>
           </details>
           <details className="group bg-background-light p-6 rounded-lg border border-black">
             <summary className="flex justify-between items-center cursor-pointer text-black font-medium list-none">
@@ -29,7 +28,7 @@ export const QuestionSection = () => {
           </details>
           <details className="group bg-background-light p-6 rounded-lg border border-black">
             <summary className="flex justify-between items-center cursor-pointer text-black font-medium list-none">
-              ¿Los vehículos usados tienen garantía?
+              ¿Los vehículos tienen garantía?
               <span className="transition group-open:rotate-180">
                 <span className="material-symbols-outlined">expand_more</span>
               </span>

@@ -2,6 +2,7 @@ import { BrandsSection }   from "../app/components/main/home/BrandsSection"
 import { CommentsSection } from "../app/components/main/home/CommentsSection"
 import { LocationSection } from "../app/components/main/home/LocationSection"
 import { QuestionSection } from "../app/components/main/home/QuestionSection"
+import { ServicesSection } from "../app/components/main/home/ServicesSection"
 import { StockSection }    from "../app/components/main/home/StockSection"
 import { TopSection }      from "../app/components/main/home/TopSection"
 import { WhySection }      from "../app/components/main/home/WhySection"
@@ -12,6 +13,7 @@ export const Main = () => {
     <main>
       <TopSection />
       <StockSection />
+      {/* <ServicesSection /> */}
       <BrandsSection />
       <WhySection />
       <QuestionSection />
