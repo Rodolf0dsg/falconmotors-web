@@ -88,7 +88,7 @@ export const ServicesForm = () => {
 
     const service = typeof data.service === "object" ? data.service.label : data.service;
 
-    return `Saludos, mi nombre es ${data.name} y me gustaría agendar una cita para el ${fechaFormateada} a las ${data.time}. Motivo: ${service}. ${data.message ?? ''} `;
+    return `Saludos, mi nombre es ${data.name}, mi vehiculo es: ${data.vehicle} y me gustaría agendar una cita para el ${fechaFormateada} a las ${data.time}. Motivo: ${service}. ${data.message ?? ''} `;
   };
 
 
