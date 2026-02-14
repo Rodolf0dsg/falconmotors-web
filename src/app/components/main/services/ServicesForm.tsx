@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Loader } from "../../Query/Loader";
 import { toast } from "sonner";
 import { ClockInput } from "../../services/clockInput";
+import CreatableSelect from "react-select/creatable";
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
 interface ServiceOption {
@@ -18,6 +19,7 @@ interface Inputs {
   name: string;
   service: ServiceOption;
   date: string;
+  vehicle: string;
   time: string;
   phone: string;
   email: string
@@ -29,6 +31,39 @@ const serviceOptions = [
   { value: "Revisión Completa", label: "Revisión Completa" },
   { value: "Latonería y Pintura", label: "Latonería y Pintura" },
   { value: "Otro", label: "Otro" },
+];
+
+const vehicleOptions = [
+
+  { value: 'Kaiyi X3', label: 'Kaiyi X3' },
+  { value: 'Kaiyi X7 Pro', label: 'Kaiyi X7 Pro' },
+
+  { value: 'DFSK D1', label: 'DFSK D1' },
+  { value: 'DFSK C37', label: 'DFSK C37' },
+  { value: 'DFSK C35', label: 'DFSK C35' },
+  { value: 'DFSK K01S', label: 'DFSK K01S' },
+  { value: 'DFSK K05S', label: 'DFSK K05S' },
+  { value: 'DFSK Glory 500', label: 'DFSK Glory 500' },
+  { value: 'DFSK Glory 500 Turbo', label: 'DFSK Glory 500 Turbo' },
+
+  { value: 'JMC Grand Avenue', label: 'JMC Grand Avenue' },
+  { value: 'JMC Vigus', label: 'JMC Vigus' },
+  { value: 'JMC Carrying', label: 'JMC Carrying' },
+  { value: 'JMC Conquer', label: 'JMC Conquer' },
+  { value: 'JIM RE-Max', label: 'JIM RE-Max' },
+
+  { value: 'Jetour X70', label: 'Jetour X70' },
+
+  { value: 'Forthing T5 EVO', label: 'Forthing T5 EVO' },
+  { value: 'Forthing S60', label: 'Forthing S60' },
+  { value: 'Forthing M4', label: 'Forthing M4' },
+
+  { value: 'Suzuki S-Presso', label: 'Suzuki S-Presso' },
+  { value: 'Suzuki Swift', label: 'Suzuki Swift' },
+  { value: 'Donfeng', label: 'Dongfeng' },
+  { value: 'ICKO DENA', label: 'ICKO DENA' },
+  { value: 'ICKO TARA', label: 'ICKO TARA' },
+  { value: 'SAIPA QWIK', label: 'SAIPA QWIK' },
 ];
 
 export const ServicesForm = () => {
@@ -74,8 +109,9 @@ export const ServicesForm = () => {
           time: data.time,
           clientName: data.name,
           contact: data.phone,
-          notes: `${data.message}\nContactos: ${data.email} | ${data.phone}`,
+          notes: `${data.message}`,
           service: data.service.label,
+          vehicle: data.vehicle,
         }),
       });
 
@@ -207,6 +243,78 @@ export const ServicesForm = () => {
           </div>
         </div>
 
+        <div>
+          <div>
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="vehicle">
+              Vehículo
+            </label>
+            <Controller
+              name="vehicle"
+              control={control}
+              rules={{ required: "Indique su vehículo" }}
+              render={({ field }) => (
+                <CreatableSelect
+                  {...field}
+                  id="vehicle"
+                  options={vehicleOptions}
+                  placeholder="Ingresa la Marca, año y modelo..."
+                  isClearable
+                  formatCreateLabel={(inputValue) => `Usar "${inputValue}"`}
+                  className="rounded-lg text-black"
+                  styles={{
+                    control: (base) => ({
+                      ...base,
+                      backgroundColor: "white",
+                      borderColor: "rgb(209 213 219)",
+                      borderRadius: "0.5rem",
+                      height: "3rem",
+                      boxShadow: "none",
+                      cursor: "text",
+                      "&:hover": {
+                        borderColor: "rgb(209 213 219)",
+                      },
+                    }),
+                    valueContainer: (base) => ({
+                      ...base,
+                      padding: "0 1rem",
+                    }),
+                    input: (base) => ({
+                      ...base,
+                      color: "black",
+                    }),
+                    placeholder: (base) => ({
+                      ...base,
+                      color: "rgb(107 114 128)",
+                    }),
+                    singleValue: (base) => ({
+                      ...base,
+                      color: "black",
+                    }),
+                    menu: (base) => ({
+                      ...base,
+                      backgroundColor: "#ffffff",
+                      color: "black",
+                      zIndex: 50,
+                    }),
+                    option: (base, state) => ({
+                      ...base,
+                      backgroundColor: state.isFocused ? "#f3f4f6" : "white",
+                      color: "black",
+                      cursor: "pointer",
+                      "&:active": {
+                        backgroundColor: "#e5e7eb",
+                      },
+                    }),
+                  }}
+                  onChange={(option) => field.onChange(option ? option.value : "")}
+                  value={field.value ? { value: field.value, label: field.value } : null}
+                />
+              )}
+            />
+            {errors.vehicle && <span className="form-error text-red-500 text-xs mt-1">{errors.vehicle.message}</span>}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="relative cursor-pointer">
             <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="fecha">Fecha Preferida</label>
@@ -303,9 +411,8 @@ export const ServicesForm = () => {
               )
             }}
           />
-
-
         </div>
+
         <div>
           <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="mensaje">Mensaje Adicional
             (Opcional)</label>
