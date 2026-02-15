@@ -39,6 +39,7 @@ export const VehicleGallery = ({
 
   const handleColorChange = (colorName: string) => {
     setSelectedColor(colorName);
+    setSelectedThumbnailIndex(0);
   };
 
   const handleThumbnailSelect = (index: number) => {
@@ -57,22 +58,22 @@ export const VehicleGallery = ({
             selectedImageIndex={selectedThumbnailIndex}
             onThumbnailSelect={handleThumbnailSelect}
           />
-          <div className="absolute bottom-0 left-0 right-4 h-16 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent pointer-events-none hidden md:block"/>
+          <div className="absolute bottom-0 left-0 right-4 h-16 bg-linear-to-t from-background-light to-transparent pointer-events-none hidden md:block"/>
         </div>
 
         <div className="flex-1 order-1 md:order-2 lg:sticky lg:top-24 w-full">
           <div
-            className="aspect-4/3 w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl cursor-pointer"
-            data-alt={`Vista frontal del Toyota Corolla XSE color ${selectedColor}`}
+            className="aspect-4/3 w-full bg-center bg-no-repeat bg-contain flex flex-col justify-end overflow-hidden rounded-xl cursor-pointer"
+            data-alt={`${selectedColor}`}
             style={{ backgroundImage: `url("${ currentImageUrl }")`}}
             >
-            <div className="p-4 bg-linear-to-t from-black/50 to-transparent">
+            {/* <div className="p-4 bg-linear-to-t from-black/50 to-transparent">
               <span
                 className="inline-flex items-center gap-2 text-white bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full text-sm">
                 <span className="material-symbols-outlined text-base!">zoom_in</span>
                 Haz clic para ampliar
               </span>
-            </div>
+            </div> */}
           </div>
           
             <ColorSelector 

@@ -6,12 +6,12 @@ export const LocationSection = () => {
   return (
     <section className="pb-16 pt-16 sm:py-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-white text-3xl font-bold text-center mb-12">Donde Ubicarnos</h2>
+        <h2 className="text-black text-3xl font-bold text-center mb-12">Donde Ubicarnos</h2>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
         
 
-          <div className="w-full h-96 rounded-lg bg-gray-700 overflow-hidden">
+          <div className="w-full h-96 rounded-lg bg-gray-700 overflow-hidden shadow-2xl">
 
             
             <iframe 
@@ -33,16 +33,16 @@ export const LocationSection = () => {
               {/* <span className="material-symbols-outlined text-primary text-2xl mt-1">location_on</span> */}
               <MdOutlineLocationOn size={ 28 } className="text-primary"/>
               <div>
-                <h4 className="text-white font-bold">Dirección</h4>
-                <p className="text-text-muted-dark">Av. Intercomunal Alí Primera, Punto Fijo, Venezuela</p>
+                <h4 className="text-black font-bold">Dirección</h4>
+                <p className="text-text-muted-light">Av. Intercomunal Alí Primera, Punto Fijo, Venezuela</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               {/* <span className="material-symbols-outlined text-primary text-2xl mt-1">phone</span> */}
               <MdOutlinePhone size={ 26 } className="text-primary" />
               <div>
-                <h4 className="text-white font-bold">Teléfono</h4>
-                <p className="text-text-muted-dark">+58 (412) 123-456</p>
+                <h4 className="text-black font-bold">Teléfono</h4>
+                <a href="https://wa.me/+584224448128" target="_blank" className="text-text-muted-light hover:text-primary cursor-pointer">+58 (422) 444-8128</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -50,9 +50,9 @@ export const LocationSection = () => {
               {/* <FiClock size={ 26 } className="text-primary" /> */}
               <HiOutlineClock size={ 26 } className="text-primary" />
               <div>
-                <h4 className="text-white font-bold">Horario de Atención</h4>
-                <p className="text-text-muted-dark">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
-                <p className="text-text-muted-dark">Sábados: 8:30 AM - 1:00 PM</p>
+                <h4 className="text-black font-bold">Horario de Atención</h4>
+                <p className="text-text-muted-light">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                <p className="text-text-muted-light">Sábados: 8:30 AM - 1:00 PM</p>
               </div>
             </div>
           </div>

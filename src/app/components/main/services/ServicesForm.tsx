@@ -2,6 +2,7 @@
 import { parseLocalDate, startOfDay } from "@/src/helpers/dates";
 import dynamic from "next/dynamic";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { ColorSelector } from '../vehicles/ColorSelector';
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
 interface ServiceOption {
@@ -10,10 +11,10 @@ interface ServiceOption {
 }
 
 interface Inputs {
-  name: string;
-  service: ServiceOption;
-  date: string;
-  time: string;
+  name:     string;
+  service:  ServiceOption;
+  date:     string;
+  time:     string;
   message?: string;
 }
 
@@ -26,7 +27,7 @@ const serviceOptions = [
 
 export const ServicesForm = () => {
 
-  const phone = '584224448128';
+  const phone = process.env.NEXT_PUBLIC_SERVICES_WHATSAPP;
 
   const {
     register,
@@ -51,26 +52,28 @@ export const ServicesForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
     const message = buildMessage(data);
     const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, "_blank"); // abre WhatsApp en nueva pestaña
+    window.open(whatsappLink, "_blank");
   }
 
   return (
-    <section className="p-4">
+    <section className="p-4 bg-gray-100">
       <div className="flex flex-wrap justify-center text-center gap-3 p-4">
         <div className="flex w-full flex-col gap-3">
-          <p className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Agenda tu Cita</p>
-          <p className="text-text-muted-dark text-base font-normal leading-normal">Completa el formulario para contactarte con
+          <p className="text-black text-4xl font-black leading-tight tracking-[-0.033em]">Agenda tu Cita</p>
+          <p className="text-text-muted-light text-base font-normal leading-normal">Completa el formulario para contactarte con
             uno de nuestros asesores
           </p>
         </div>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 max-w-xl mx-auto flex flex-col gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-2 max-w-xl mx-auto flex flex-col gap-6 bg-white rounded-lg p-4 border border-gray-300 shadow-lg">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="relative">
-            <label className="block text-sm font-medium text-white/80 mb-2" htmlFor="nombre">Nombre</label>
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="nombre">Nombre</label>
             <input
-              className="w-full bg-white/5 border border-white/10 rounded-lg h-12 px-4 text-white placeholder-white/40 focus:ring-primary focus:border-primary transition-colors"
-              id="nombre" type="text"
+              className="w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-gray-500 transition-colors form-input focus:outline-0"
+              id="nombre" 
+              type="text"
+              placeholder="Ingrese su nombre..."
               {...register("name", {
                 required: "El nombre es obligatorio",
                 setValueAs: (v) => v.trim()
@@ -79,7 +82,7 @@ export const ServicesForm = () => {
             {errors.name && <span className="form-error">{errors.name.message}</span>}
           </div>
           <div className="relative">
-            <label className="block text-sm font-medium text-white/80 mb-2" htmlFor="tipo_servicio">Tipo de
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="tipo_servicio">Tipo de
               Servicio
             </label>
 
@@ -92,7 +95,7 @@ export const ServicesForm = () => {
                   {...field}
                   options={serviceOptions}
                   placeholder="Selecciona un servicio..."
-                  className="text-black"
+                  className="bg-white border border-gray-300 text-black rounded-lg form-input focus:outline-0"
                   styles={{
                     control: (base) => ({
                       ...base,
@@ -103,12 +106,12 @@ export const ServicesForm = () => {
                     }),
                     singleValue: (base) => ({
                       ...base,
-                      color: "white",
+                      color: "black",
                     }),
                     menu: (base) => ({
                       ...base,
-                      backgroundColor: "#1f2937",
-                      color: "white",
+                      backgroundColor: "#ffffff",
+                      color: "black",
                     }),
                   }}
                 />
@@ -119,18 +122,20 @@ export const ServicesForm = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="relative">
-            <label className="block text-sm font-medium text-white/80 mb-2" htmlFor="fecha">Fecha Preferida</label>
+          <div className="relative cursor-pointer">
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="fecha">Fecha Preferida</label>
             <input
-              className="w-full bg-white/5 border border-white/10 rounded-lg h-12 px-4 text-white placeholder-white/40 focus:ring-primary focus:border-primary transition-colors"
-              id="fecha" style={{ colorScheme: 'dark' }} type="date"
+              className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black placeholder-white/40 transition-colors form-input focus:outline-0"
+              onClick={() => (document.getElementById("fecha") as HTMLInputElement )?.showPicker()}
+              id="fecha"  
+              type="date"
               {...register('date', {
                 required: "La fecha es obligatoria",
                 validate: (v: string) => {
                   if (!v) return "La fecha es obligatoria";
 
-                  const selected = parseLocalDate(v);     // ✅ local
-                  const today = startOfDay(new Date());   // ✅ local
+                  const selected = parseLocalDate(v);   
+                  const today = startOfDay(new Date()); 
 
                   const day = selected.getDay(); 
 
@@ -155,11 +160,12 @@ export const ServicesForm = () => {
             />
             {errors.date && <span className="form-error">{errors.date.message}</span>}
           </div>
-          <div className="relative">
-            <label className="block text-sm font-medium text-white/80 mb-2" htmlFor="hora">Hora</label>
+          <div className="relative cursor-pointer">
+            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="hora">Hora</label>
             <input
-              className="w-full bg-white/5 border border-white/10 rounded-lg h-12 px-4 text-white placeholder-white/40 focus:ring-primary focus:border-primary transition-colors"
-              id="hora" style={{ colorScheme: 'dark' }}
+              className="cursor-pointer w-full bg-white border border-gray-300 rounded-lg h-12 px-4 text-black transition-colors form-input focus:outline-0"
+              onClick={() => (document.getElementById("hora") as HTMLInputElement )?.showPicker()}
+              id="hora"
               type="time"
               {...register('time', {
                 required: "La hora es obligatoria",
@@ -173,11 +179,13 @@ export const ServicesForm = () => {
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-white/80 mb-2" htmlFor="mensaje">Mensaje Adicional
+          <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="mensaje">Mensaje Adicional
             (Opcional)</label>
           <textarea
-            className="w-full bg-white/5 border border-white/10 rounded-lg p-4 text-white placeholder-white/40 focus:ring-primary focus:border-primary transition-colors"
-            id="mensaje" rows={4}
+            className="w-full bg-white border border-gray-300 rounded-lg p-4 text-black transition-colors form-input focus:outline-0"
+            id="mensaje" 
+            rows={4}
+            placeholder="Escriba su mensaje..."
             {...register('message', {
               setValueAs: (v) => v.trim()
             })}

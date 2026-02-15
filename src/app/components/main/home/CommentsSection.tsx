@@ -75,7 +75,7 @@ export const CommentsSection = () => {
   return (
     <section className="pt-16 sm:pt-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-white text-3xl font-bold text-center mb-12">Comentarios de Nuestros Clientes</h2>
+        <h2 className="text-black text-3xl font-bold text-center mb-12">Comentarios de Nuestros Clientes</h2>
 
 
         <div
@@ -88,7 +88,7 @@ export const CommentsSection = () => {
                 ? 
                 (
                   <div className="w-full text-center py-8">
-                    <p className="text-gray-400 text-lg">
+                    <p className="text-text-muted-light text-lg">
                       No hay comentarios todavía, sé el primero en comentar...
                     </p>
                   </div>

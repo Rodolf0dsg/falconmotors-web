@@ -35,7 +35,7 @@ export const Header1 = () => {
   }, []);
 
   const baseClasses = "fixed top-0 left-0 right-0 z-50 transition-colors duration-600";
-  const scrolledClasses = "dark:bg-background-dark/80 backdrop-blur-sm shadow-md border-gray-800 dark:border-b-[#392828]";
+  const scrolledClasses = "bg-background-light/30 backdrop-blur-sm shadow-md border-gray-800";
   const transparentClasses = "bg-transparent";
 
   return (
@@ -53,7 +53,7 @@ export const Header1 = () => {
                 </svg> */}
                 <Link href={'/'}>
                   <Image
-                    src={'/logos/Logo-dark.png'}
+                    src={'/logos/Logo-white.png'}
                     alt='Logo'
                     width={ 100 }
                     height={ 40 }
@@ -81,7 +81,7 @@ export const Header1 = () => {
 
             {/* Botón hamburguesa */}
             <div className="lg:hidden">
-              <label className="cursor-pointer text-white" htmlFor="mobile-menu-toggle">
+              <label className="cursor-pointer text-black" htmlFor="mobile-menu-toggle">
                 <svg className="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -106,12 +106,12 @@ export const Header1 = () => {
 
         {/* Sidebar */}
         <div
-          className="fixed top-0 right-0 h-full w-72 bg-card-dark z-60 shadow-lg transition-transform duration-300"
+          className="fixed top-0 right-0 h-full w-72 bg-card-light z-60 shadow-lg transition-transform duration-300"
           id="mobile-menu-sidebar">
           <div className="flex flex-col">
-            <div className="flex justify-between items-center p-6 border-b border-card-border-dark">
-              <h2 className="text-white text-lg font-bold">Menú</h2>
-              <label className="cursor-pointer text-white" htmlFor="mobile-menu-toggle">
+            <div className="flex justify-between items-center p-6 border-b border-gray-400">
+              <h2 className="text-black text-lg font-bold">Menú</h2>
+              <label className="cursor-pointer text-gray-600" htmlFor="mobile-menu-toggle">
                 <svg className="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -126,7 +126,7 @@ export const Header1 = () => {
                 ))}
               </ul>
             </nav>
-            <div className="p-6 border-t border-card-border-dark">
+            <div className="p-6 border-t border-gray-400">
               <Link href="/contact"
                 className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary  text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-700 transition-colors">
                 <span className="truncate">Agendar una cita</span>

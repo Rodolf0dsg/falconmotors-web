@@ -2,7 +2,7 @@ import { Vehicle, VehicleFiltersResponse, VehicleResponse, VehicleResponsePartia
 
 interface VehicleQuery {
   limit?:  number;
-  offset?: number;
+  page?: number;
   brand?:  string;
   type?:   string;
   search?: string;
@@ -13,7 +13,7 @@ export const getVehicles = async ( query: VehicleQuery = {} ): Promise<VehicleRe
   const params = new URLSearchParams();
 
   if (query.limit)  params.append("limit", query.limit.toString());
-  if (query.offset) params.append("offset", query.offset.toString());
+  if (query.page)   params.append("page", query.page.toString());
   if (query.brand)  params.append("brand", query.brand);
   if (query.type)   params.append("type", query.type);
   if (query.search) params.append("search", query.search);

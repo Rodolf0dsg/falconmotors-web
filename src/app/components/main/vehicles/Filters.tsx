@@ -71,8 +71,8 @@ export const Filters = () => {
 
   return (
     <aside className="hidden lg:block lg:w-1/4 xl:w-1/5 sticky top-24 self-start">
-      <div className="p-6 rounded-xl bg-gray-100 dark:bg-[#1c1c1c] border border-gray-200 dark:border-card-border-dark">
-        <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Filtros</h3>
+      <div className="p-6 rounded-xl bg-gray-100 border border-gray-300">
+        <h3 className="text-xl font-bold mb-6 text-gray-900">Filtros</h3>
         <form className="space-y-6">
 
         {/* <div>
@@ -89,7 +89,7 @@ export const Filters = () => {
 
 
           <div>
-            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2" htmlFor="brand">Marca</label>
+            <label className="block text-sm font-medium text-gray-600 mb-2" htmlFor="brand">Marca</label>
             <Select
               inputId="brand"
               options={ dataForBrandsSelect } 
@@ -119,7 +119,7 @@ export const Filters = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2" htmlFor="type">Tipo</label>
+            <label className="block text-sm font-medium text-gray-600 mb-2" htmlFor="type">Tipo</label>
             <Select
               inputId="type"
               options={ dataForTypesSelect } 

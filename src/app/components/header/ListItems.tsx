@@ -15,7 +15,7 @@ export const ListMobileItem = ({ title, path }: Props) => {
   return (
     <li>
       <Link 
-        className={`block ${ (pathname === path) ? 'text-primary' : 'text-white' } text-base font-medium hover:text-primary transition-colors`}
+        className={`block ${ (pathname === path) ? 'text-primary' : 'text-shadow-text-light' } text-base font-medium hover:text-primary transition-colors`}
         href={ path }
       >
         { title }
@@ -30,7 +30,7 @@ export const ListItem = ({ title, path }:Props) => {
 
   return (
     <Link 
-      className={`${ (pathname === path) ? 'text-primary' : 'text-white' } font-medium leading-normal hover:text-primary transition-colors`}
+      className={`${ (pathname === path) ? 'text-primary' : 'text-shadow-text-light' } font-medium leading-normal hover:text-primary transition-colors`}
       href={ path }
     >
       { title }

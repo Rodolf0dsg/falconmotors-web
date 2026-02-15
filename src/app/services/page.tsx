@@ -41,11 +41,11 @@ export default function ServicesPage() {
       </section>
 
       <section>
-        <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pt-5">Nuestros
+        <h2 className="text-black text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pt-5">Nuestros
           Servicios</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
           <div
-            className="group relative overflow-hidden bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-4/3\ transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-105"
+            className="group relative overflow-hidden bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-4/3 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-105"
             data-alt="Mechanic performing general maintenance on a car engine"
             style={{ backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfdYBtZTQbj3_VsAoPPYyYGxln_a9Y7f0NdpcpaMWYbCOR6lKVOiCuRt_EqUoPJaGjkE9_SV0hHi22VrzUGOZQ3SXTPSCJL6hXCXPo7xCCEIF8p1ffhP4BMkuTSTv5UZ-GCvxuDCkxqA8MOhyam21JQ16j-rM9GhUzdXnkR03BRMd0GTJM_1QBK7svZ7LnIJO3ezb7hNL4fQxA1fGWqW2QXAoiNsVQrDhlz0nr_anu5RJYo9b4af6NoJ9qANo1da-e9Aop8TQuKeIj")' }}
           >

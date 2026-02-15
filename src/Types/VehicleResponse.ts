@@ -34,6 +34,7 @@ export interface Vehicle {
   features:     string[];
   createdAt:    Date;
   updatedAt:    Date;
+  description:  string;
 }
 
 export interface Color {

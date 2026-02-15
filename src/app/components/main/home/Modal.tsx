@@ -20,11 +20,12 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
       ></div>
 
       {/* Contenedor del modal */}
-      <div className="relative bg-card-dark rounded-xl shadow-lg p-6 z-10 w-full max-w-md sm:max-w-lg max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-card-light rounded-xl shadow-lg p-6 z-10 w-full max-w-md sm:max-w-lg max-h-[90vh] overflow-y-auto">
+        <h3 className="text-black text-lg font-bold mb-4 text-center">Deja tu comentario</h3>
         {/* Botón de cierre */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
+          className="cursor-pointer absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
         >
           <IoCloseCircleOutline />
         </button>

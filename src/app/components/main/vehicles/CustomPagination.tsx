@@ -27,7 +27,7 @@ export const CustomPagination = ({ pages = 1 }: CumstomPaginationProps) => {
     <div className="flex items-center justify-center p-4 mt-8">
 
       <button 
-        className="flex size-10 items-center justify-center text-gray-500 dark:text-white cursor-pointer hover:bg-gray-200 dark:hover:bg-card-border-dark rounded-full"
+        className="flex size-10 items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-200 rounded-full"
         disabled={ page == 1 }
         onClick={ () => handlePageChange(page - 1) }
       >
@@ -41,10 +41,10 @@ export const CustomPagination = ({ pages = 1 }: CumstomPaginationProps) => {
 
           return (
             <button 
-              className={`text-sm font-bold leading-normal cursor-pointer flex size-10 items-center justify-center text-white rounded-full
+              className={`text-sm font-bold leading-normal cursor-pointer flex size-10 items-center justify-center text-white rounded-full mr-1
                 ${isActive
-                  ? "font-bold text-white bg-primary tracking-[0.015em]"
-                  : "font-normal text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-card-border-dark"
+                  ? "font-bold text-white bg-primary hover:bg-red-800 tracking-[0.015em]"
+                  : "font-normal bg-gray-400 text-gray-800 hover:bg-gray-600"
                 }
               `}
               key={ pageNumber }
@@ -57,7 +57,7 @@ export const CustomPagination = ({ pages = 1 }: CumstomPaginationProps) => {
       }
 
       <button 
-        className="flex size-10 items-center justify-center text-gray-500 dark:text-white cursor-pointer hover:bg-gray-200 dark:hover:bg-card-border-dark rounded-full"
+        className="flex size-10 items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-200 rounded-full"
         disabled={ page == pages }
         onClick={ () => handlePageChange(page - 1) }
       >
