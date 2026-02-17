@@ -71,6 +71,8 @@ export const ServicesForm = () => {
   const phone = process.env.NEXT_PUBLIC_SERVICES_WHATSAPP;
   const [isLoading, setIsLoading] = useState(false);
   const [showClock, setShowClock] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const {
     register,
@@ -90,6 +92,10 @@ export const ServicesForm = () => {
 
     return `Saludos, mi nombre es ${data.name}, mi vehiculo es: ${data.vehicle} y me gustaría agendar una cita para el ${fechaFormateada} a las ${data.time}. Motivo: ${service}. ${data.message ?? ''} `;
   };
+
+  const filteredOptions = vehicleOptions.filter(option =>
+    option.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
 
   const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
@@ -243,76 +249,92 @@ export const ServicesForm = () => {
           </div>
         </div>
 
-        <div>
-          <div>
-            <label className="block text-sm font-medium text-text-muted-light mb-2" htmlFor="vehicle">
-              Vehículo
-            </label>
-            <Controller
-              name="vehicle"
-              control={control}
-              rules={{ required: "Indique su vehículo" }}
-              render={({ field }) => (
-                <CreatableSelect
-                  {...field}
-                  id="vehicle"
-                  options={vehicleOptions}
-                  placeholder="Ingresa la Marca, año y modelo..."
-                  isClearable
-                  formatCreateLabel={(inputValue) => `Usar "${inputValue}"`}
-                  className="rounded-lg text-black"
-                  styles={{
-                    control: (base) => ({
-                      ...base,
-                      backgroundColor: "white",
-                      borderColor: "rgb(209 213 219)",
-                      borderRadius: "0.5rem",
-                      height: "3rem",
-                      boxShadow: "none",
-                      cursor: "text",
-                      "&:hover": {
-                        borderColor: "rgb(209 213 219)",
-                      },
-                    }),
-                    valueContainer: (base) => ({
-                      ...base,
-                      padding: "0 1rem",
-                    }),
-                    input: (base) => ({
-                      ...base,
-                      color: "black",
-                    }),
-                    placeholder: (base) => ({
-                      ...base,
-                      color: "rgb(107 114 128)",
-                    }),
-                    singleValue: (base) => ({
-                      ...base,
-                      color: "black",
-                    }),
-                    menu: (base) => ({
-                      ...base,
-                      backgroundColor: "#ffffff",
-                      color: "black",
-                      zIndex: 50,
-                    }),
-                    option: (base, state) => ({
-                      ...base,
-                      backgroundColor: state.isFocused ? "#f3f4f6" : "white",
-                      color: "black",
-                      cursor: "pointer",
-                      "&:active": {
-                        backgroundColor: "#e5e7eb",
-                      },
-                    }),
-                  }}
-                  onChange={(option) => field.onChange(option ? option.value : "")}
-                  value={field.value ? { value: field.value, label: field.value } : null}
-                />
-              )}
-            />
-            {errors.vehicle && <span className="form-error text-red-500 text-xs mt-1">{errors.vehicle.message}</span>}
-          </div>
+        <div className="relative w-full">
+          <label className="block text-sm font-medium text-text-muted-light mb-2">Vehículo</label>
+
+          <Controller
+            name="vehicle"
+            control={control}
+            rules={{ required: "Indique su vehículo" }}
+            render={({ field }) => {
+              // NUEVO: Estado para rastrear qué opción está resaltada
+              const [activeIndex, setActiveIndex] = useState(-1);
+
+              const handleKeyDown = (e: React.KeyboardEvent) => {
+                if (!isOpen) return;
+
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setActiveIndex((prev) => (prev < filteredOptions.length - 1 ? prev + 1 : prev));
+                } else if (e.key === "ArrowUp") {
+                  e.preventDefault();
+                  setActiveIndex((prev) => (prev > 0 ? prev - 1 : 0));
+                } else if (e.key === "Enter" && activeIndex >= 0) {
+                  e.preventDefault(); // Evita enviar el form
+                  const selectedOption = filteredOptions[activeIndex];
+                  setInputValue(selectedOption.label);
+                  field.onChange(selectedOption.value);
+                  setIsOpen(false);
+                  setActiveIndex(-1);
+                } else if (e.key === "Escape") {
+                  setIsOpen(false);
+                }
+              };
+
+              return (
+                <div className="relative">
+                  <input
+                    type="text"
+                    autoComplete="off"
+                    value={field.value || ""}
+                    onKeyDown={handleKeyDown} // NUEVO: Escucha las flechas y el enter
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setInputValue(val);
+                      field.onChange(val);
+                      setIsOpen(true);
+                      setActiveIndex(-1); // Resetea el resaltado al escribir
+                    }}
+                    onFocus={() => setIsOpen(true)}
+                    onBlur={() => {
+                      setTimeout(() => {
+                        setIsOpen(false);
+                        setActiveIndex(-1);
+                      }, 200);
+                    }}
+                    placeholder="Marca, modelo, año..."
+                    className="w-full h-12 px-4 rounded-lg border border-gray-300 text-black bg-white outline-none focus:ring-1 focus:ring-primary transition-all"
+                  />
+
+                  {isOpen && filteredOptions.length > 0 && (
+                    <ul className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-xl max-h-60 overflow-auto">
+                      {filteredOptions.map((option, index) => (
+                        <li
+                          key={option.value}
+                          onClick={() => {
+                            setInputValue(option.label);
+                            field.onChange(option.value);
+                            setIsOpen(false);
+                          }}
+                          // NUEVO: Clase condicional para resaltar con las flechas
+                          className={`px-4 py-3 cursor-pointer text-black text-sm border-b border-gray-50 last:border-none flex justify-between items-center transition-colors ${index === activeIndex ? "bg-gray-200" : "hover:bg-gray-100"
+                            }`}
+                        >
+                          <span className={index === activeIndex ? "font-bold" : "font-medium"}>
+                            {option.label}
+                          </span>
+                          <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">
+                            Sugerencia
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            }}
+          />
+          {errors.vehicle && <span className="form-error text-red-500 text-xs mt-1">{errors.vehicle.message}</span>}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -340,7 +362,7 @@ export const ServicesForm = () => {
                   }
 
                   const time = getValues("time");
-                  if (!time) return "Selecciona una hora para hoy";
+                  if (!time) return "Selecciona una fecha";
 
                   const [h, m] = time.split(":").map(Number);
                   const selectedDateTime = parseLocalDate(v);
