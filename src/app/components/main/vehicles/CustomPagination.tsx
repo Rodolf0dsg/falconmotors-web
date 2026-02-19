@@ -59,7 +59,7 @@ export const CustomPagination = ({ pages = 1 }: CumstomPaginationProps) => {
       <button 
         className="flex size-10 items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-200 rounded-full"
         disabled={ page == pages }
-        onClick={ () => handlePageChange(page - 1) }
+        onClick={ () => handlePageChange(page + 1) }
       >
         <span className="material-symbols-outlined">chevron_right</span>
       </button>
